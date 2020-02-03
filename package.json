@@ -1,0 +1,19 @@
+{
+  "name": "libhost",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/pegasus-core.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diondree/libhost.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diondree/libhost/issues"
+  },
+  "homepage": "https://github.com/diondree/libhost#readme"
+}
