@@ -1,0 +1,1 @@
+function n(n){var t=document.createElement("textarea");return t.innerHTML=n,0===t.childNodes.length?"":t.childNodes[0].nodeValue}function t(n,t=this){return function t(r){if(!r||r===document||r===window)return null;return r.closest(n)||t(r.getRootNode().host)}(t)}export{t as c,n as h};
