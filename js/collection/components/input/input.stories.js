@@ -6,7 +6,7 @@ export default {
   decorators: [withKnobs]
 };
 
-export const ControlledWithKnobs = () => {
+export const Default = () => {
   const label = text('Input field label', 'Label');
   const type = text('Input field type', 'text');
   const helpText = text('Input field help text', '');
@@ -15,7 +15,10 @@ export const ControlledWithKnobs = () => {
     'Pattern name (regex validator e.g only-number, only-chars, url, hex-colors)',
     ''
   );
-  const errorMessage = text('Invalid error message', "please enter valid input");
+  const errorMessage = text(
+    'Invalid error message',
+    'please enter valid input'
+  );
   const required = boolean('Required', false);
   const disabled = boolean('Disabled', false);
   const fullWidth = boolean('Full width', false);
@@ -32,6 +35,7 @@ export const ControlledWithKnobs = () => {
       disabled={disabled}
       full-width={fullWidth}
       type={type}
+      value="firstttttt"
     ></smtt-input>
   );
 };
@@ -67,7 +71,7 @@ export const RequiredInput = () => (
   ></smtt-input>
 );
 
-export const disabled = () => (
+export const Disabled = () => (
   <smtt-input
     label="test"
     placeholder="test..."

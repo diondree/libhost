@@ -9,7 +9,6 @@ export default {
 export const ControlledWithKnobs = () => {
   const label = text('Input field label', 'Label');
   const helpText = text('Input field help text', '');
-  const placeholder = text('Input field placeholder', 'placeholder...');
   const pattenName = text(
     'Pattern name (regex validator e.g only-number, only-chars, url, hex-colors)',
     ''
@@ -26,7 +25,6 @@ export const ControlledWithKnobs = () => {
     <smtt-input
       label={label}
       help-text={helpText}
-      placeholder={placeholder}
       name="myInput"
       error-msg={errorMessage}
       pattern-name={pattenName}
@@ -41,7 +39,6 @@ export const ControlledWithKnobs = () => {
 export const Basic = () => (
   <smtt-input
     label="test"
-    placeholder="test..."
     name="myInput"
     error-msg="something's wrong"
     type="password"
@@ -51,7 +48,6 @@ export const Basic = () => (
 export const RequiredInput = () => (
   <smtt-input
     label="test"
-    placeholder="test..."
     name="myInput"
     error-msg="Your input seems invalid"
     required
@@ -62,7 +58,6 @@ export const RequiredInput = () => (
 export const disabled = () => (
   <smtt-input
     label="test"
-    placeholder="test..."
     name="myInput"
     error-msg="Your input seems invalid"
     pattern-name="only-number"

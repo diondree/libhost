@@ -1,4 +1,4 @@
-import { Host, h } from "@stencil/core";
+import { Component, Host, h, Prop, Method, Element, Listen } from '@stencil/core';
 export class Menu {
     constructor() {
         // this.slottedContent = this.menuElement.shadowRoot

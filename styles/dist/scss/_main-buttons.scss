@@ -1,0 +1,22 @@
+.smt-btn {
+  border-radius: 4px;
+  padding: 8px 16px;
+  height: $btn-height;
+  font-size: $btn-font-size;
+  font-weight: bold;
+  &.smt-btn--primary {
+    @include theme-btn('primary');
+  }
+  &.smt-btn--secondary {
+    @include theme-btn('secondary');
+  }
+  &.smt-btn--destructive {
+    @include theme-btn('destructive');
+  }
+  &.smt-btn--warning {
+    @include theme-btn('warning');
+  }
+  &.smt-btn--tertiary {
+    @include theme-btn('tertiary');
+  }
+}

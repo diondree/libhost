@@ -1,0 +1,887 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "check-box",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "the state of the checkbox 'true' 'false' or 'indeterminate'"
+        },
+        {
+          "name": "disable-checkbox",
+          "description": "wether or not the checkbox is disabled"
+        },
+        {
+          "name": "label",
+          "description": "text label for our checkbox"
+        },
+        {
+          "name": "label-position",
+          "description": "the positioning for the label 'top', 'right', 'left', or 'bottom'"
+        }
+      ]
+    },
+    {
+      "name": "smt-main-button",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "alignment",
+          "description": "Alignment of button content",
+          "values": [
+            {
+              "name": "center"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            }
+          ]
+        },
+        {
+          "name": "disabled",
+          "description": "Wether the button is disabled or not"
+        },
+        {
+          "name": "full-height",
+          "description": "Whether or not the button should fill the height of its parent"
+        },
+        {
+          "name": "full-width",
+          "description": "Whether or not the button should fill the width of its parent"
+        },
+        {
+          "name": "icon",
+          "description": "icon to be used in button (if variation necessitates)"
+        },
+        {
+          "name": "icon-right",
+          "description": "Whether icon should be displayed to the left or the right"
+        },
+        {
+          "name": "size",
+          "description": "The size of the button",
+          "values": [
+            {
+              "name": "lg"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "sm"
+            }
+          ]
+        },
+        {
+          "name": "theme",
+          "description": "color theme to be applied to the button e.g primary",
+          "values": [
+            {
+              "name": "destructive"
+            },
+            {
+              "name": "primary"
+            },
+            {
+              "name": "secondary"
+            },
+            {
+              "name": "tertiary"
+            },
+            {
+              "name": "text-links"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        },
+        {
+          "name": "type",
+          "description": "The type of button (corresponds to type property of native html button)",
+          "values": [
+            {
+              "name": "button"
+            },
+            {
+              "name": "confirm"
+            },
+            {
+              "name": "submit"
+            }
+          ]
+        },
+        {
+          "name": "variation",
+          "description": "button variation: icon only button, icon with label or label only",
+          "values": [
+            {
+              "name": "icon"
+            },
+            {
+              "name": "icon-label"
+            },
+            {
+              "name": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "smtt-accordion",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "smtt-accordion-item",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "accordion-title",
+          "description": "Title of accordion item"
+        },
+        {
+          "name": "action-bar-content",
+          "description": "The content of the action bar"
+        },
+        {
+          "name": "alignment",
+          "description": "Position of icon",
+          "values": [
+            {
+              "name": "end"
+            },
+            {
+              "name": "start"
+            }
+          ]
+        },
+        {
+          "name": "expanded",
+          "description": "Whether or not the item is expanded by default"
+        }
+      ]
+    },
+    {
+      "name": "smtt-button",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "alignment",
+          "description": "Alignment of button content",
+          "values": [
+            {
+              "name": "center"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            }
+          ]
+        },
+        {
+          "name": "disabled",
+          "description": "Wether the button is disabled or not"
+        },
+        {
+          "name": "full-height",
+          "description": "Whether or not the button should fill the height of its parent"
+        },
+        {
+          "name": "full-width",
+          "description": "Whether or not the button should fill the width of its parent"
+        },
+        {
+          "name": "icon",
+          "description": "icon to be used in button (if variation necessitates)"
+        },
+        {
+          "name": "icon-right",
+          "description": "Whether icon should be displayed to the left or the right"
+        },
+        {
+          "name": "size",
+          "description": "The size of the button",
+          "values": [
+            {
+              "name": "lg"
+            },
+            {
+              "name": "md"
+            },
+            {
+              "name": "sm"
+            }
+          ]
+        },
+        {
+          "name": "theme",
+          "description": "color theme to be applied to the button e.g primary",
+          "values": [
+            {
+              "name": "destructive"
+            },
+            {
+              "name": "primary"
+            },
+            {
+              "name": "secondary"
+            },
+            {
+              "name": "tertiary"
+            },
+            {
+              "name": "text-links"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        },
+        {
+          "name": "type",
+          "description": "The type of button (corresponds to type property of native html button)",
+          "values": [
+            {
+              "name": "button"
+            },
+            {
+              "name": "confirm"
+            },
+            {
+              "name": "submit"
+            }
+          ]
+        },
+        {
+          "name": "variation",
+          "description": "button variation: icon only button, icon with label or label only",
+          "values": [
+            {
+              "name": "icon"
+            },
+            {
+              "name": "icon-label"
+            },
+            {
+              "name": "label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "smtt-confirm-dialog",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "header",
+          "description": "header of the dialog"
+        },
+        {
+          "name": "text",
+          "description": "text body of the dialog"
+        },
+        {
+          "name": "tippy-instance",
+          "description": "reference to the instance resulting from the initialization of tippy"
+        },
+        {
+          "name": "type",
+          "description": "type of message being displayed by the dialog box",
+          "values": [
+            {
+              "name": "info"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "smtt-contextual-box",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "dismissable",
+          "description": "Whether the contextual box is dismissable"
+        },
+        {
+          "name": "duration",
+          "description": "The duration of the message in milliseconds"
+        },
+        {
+          "name": "instructions",
+          "description": "Instructions found in the body of the contextual box"
+        },
+        {
+          "name": "is-visible",
+          "description": "Whether or not the contextual box should be visible"
+        },
+        {
+          "name": "message-title",
+          "description": "The title message"
+        },
+        {
+          "name": "variation",
+          "description": "The variation of the contextual box",
+          "values": [
+            {
+              "name": "error"
+            },
+            {
+              "name": "info"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "smtt-dropdown",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "align-right",
+          "description": "Whether or not the dropdown should align from the right side"
+        },
+        {
+          "name": "full-width",
+          "description": "Whether or not the dropdown should be full width"
+        },
+        {
+          "name": "has-icons",
+          "description": "Whether or not Dropdown items has icon"
+        },
+        {
+          "name": "icon",
+          "description": "The name of the icon to be used as button trigger"
+        },
+        {
+          "name": "name",
+          "description": "Title to be displayed on dropdown"
+        },
+        {
+          "name": "size",
+          "description": "The width of the dropdown container"
+        },
+        {
+          "name": "sub-heading",
+          "description": "Subheading to be displayed under name"
+        }
+      ]
+    },
+    {
+      "name": "smtt-dropdown-group",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "name",
+          "description": "The name of the group"
+        }
+      ]
+    },
+    {
+      "name": "smtt-dropdown-item",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "has-icon",
+          "description": "Whether or not item has icon"
+        },
+        {
+          "name": "href",
+          "description": "Link item should link to"
+        },
+        {
+          "name": "icon",
+          "description": "Icon to be displayed to left of the text"
+        },
+        {
+          "name": "target",
+          "description": "Target describing how the link should be opened",
+          "values": [
+            {
+              "name": "_blank"
+            },
+            {
+              "name": "_parent"
+            },
+            {
+              "name": "_self"
+            },
+            {
+              "name": "_top"
+            },
+            {
+              "name": "framename"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "smtt-footer",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "hash",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "smtt-header",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "breadcrumb",
+          "description": "Breadcrumb string"
+        },
+        {
+          "name": "header-message",
+          "description": "Message to shown beneath header"
+        },
+        {
+          "name": "image-url",
+          "description": "URl of logo to be used in header"
+        },
+        {
+          "name": "left-menu-title",
+          "description": "The title of the left menu"
+        },
+        {
+          "name": "user-menu-title",
+          "description": "The title of the user dropdown"
+        }
+      ]
+    },
+    {
+      "name": "smtt-icon",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "color",
+          "description": "icon color"
+        },
+        {
+          "name": "disabled",
+          "description": ""
+        },
+        {
+          "name": "icon",
+          "description": "icon name"
+        },
+        {
+          "name": "label",
+          "description": "The label for the icon"
+        },
+        {
+          "name": "preload",
+          "description": "comma seperated values representing any images to be preloaded"
+        },
+        {
+          "name": "theme",
+          "description": "theme to be applied to the button"
+        },
+        {
+          "name": "type",
+          "description": ""
+        },
+        {
+          "name": "width",
+          "description": "width of the svg"
+        }
+      ]
+    },
+    {
+      "name": "smtt-input",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "autofocus",
+          "description": "autofocus on element"
+        },
+        {
+          "name": "disabled",
+          "description": "wether input is disabled"
+        },
+        {
+          "name": "error-msg",
+          "description": "this sets the default error message when the invalid reason is not known or accounted for"
+        },
+        {
+          "name": "form",
+          "description": "the form to attach this input to"
+        },
+        {
+          "name": "form-id",
+          "description": "id to be applied to input field"
+        },
+        {
+          "name": "full-width",
+          "description": "wether to stretch the width to fit the container"
+        },
+        {
+          "name": "help-text",
+          "description": "small help text to be shown below input field"
+        },
+        {
+          "name": "icon",
+          "description": "If the input field should"
+        },
+        {
+          "name": "is-active",
+          "description": "Attribute to trigger active style on input"
+        },
+        {
+          "name": "is-invalid",
+          "description": "Whether or not the state of the input should be invalid"
+        },
+        {
+          "name": "label",
+          "description": "label text to be associated with input (both visually and accessibility wise)"
+        },
+        {
+          "name": "label-props",
+          "description": "Properties/attributes to pass to label"
+        },
+        {
+          "name": "name",
+          "description": "id to be given to input element"
+        },
+        {
+          "name": "pattern-name",
+          "description": "name of regex pattern to be applied to input's pattern field"
+        },
+        {
+          "name": "placeholder",
+          "description": "placeholder for input"
+        },
+        {
+          "name": "readonly",
+          "description": "wether input is required"
+        },
+        {
+          "name": "required",
+          "description": "wether input is required"
+        },
+        {
+          "name": "type",
+          "description": "type of input field",
+          "values": [
+            {
+              "name": "email"
+            },
+            {
+              "name": "month"
+            },
+            {
+              "name": "password"
+            },
+            {
+              "name": "search"
+            },
+            {
+              "name": "tel"
+            },
+            {
+              "name": "text"
+            },
+            {
+              "name": "url"
+            },
+            {
+              "name": "week"
+            }
+          ]
+        },
+        {
+          "name": "validate-on-blur",
+          "description": "Whether or not to validate input on blur"
+        },
+        {
+          "name": "value",
+          "description": "current value of the input element"
+        }
+      ]
+    },
+    {
+      "name": "smtt-rollover-menu",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": ""
+        },
+        {
+          "name": "is-expanded",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "smtt-separator",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": []
+    },
+    {
+      "name": "smtt-status-label",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "subtle",
+          "description": ""
+        },
+        {
+          "name": "variation",
+          "description": "",
+          "values": [
+            {
+              "name": "cancelled"
+            },
+            {
+              "name": "completed"
+            },
+            {
+              "name": "pending"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "smtt-toast",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "toast",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "smtt-tooltip",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "position",
+          "description": "placement of the tooltip",
+          "values": [
+            {
+              "name": "auto"
+            },
+            {
+              "name": "auto-end"
+            },
+            {
+              "name": "auto-start"
+            },
+            {
+              "name": "bottom"
+            },
+            {
+              "name": "bottom-left"
+            },
+            {
+              "name": "bottom-right"
+            },
+            {
+              "name": "left"
+            },
+            {
+              "name": "left-end"
+            },
+            {
+              "name": "left-start"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "right-end"
+            },
+            {
+              "name": "right-start"
+            },
+            {
+              "name": "top"
+            },
+            {
+              "name": "top-left"
+            },
+            {
+              "name": "top-right"
+            }
+          ]
+        },
+        {
+          "name": "text",
+          "description": "tooltip text"
+        },
+        {
+          "name": "tippy-instance",
+          "description": "reference to the instance resulting from the initialization of tippy"
+        }
+      ]
+    },
+    {
+      "name": "smtt-tree",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "children-field",
+          "description": "Name of field containing children"
+        },
+        {
+          "name": "expanded",
+          "description": "Whether tree should be expanded by default"
+        },
+        {
+          "name": "group-field",
+          "description": "Name of group field"
+        },
+        {
+          "name": "paginate",
+          "description": "Whether or not to paginate data"
+        },
+        {
+          "name": "row-height",
+          "description": "Height of rows"
+        },
+        {
+          "name": "row-selection",
+          "description": "Type of selection to be used in tree",
+          "values": [
+            {
+              "name": "multiple"
+            },
+            {
+              "name": "single"
+            }
+          ]
+        },
+        {
+          "name": "tree-height",
+          "description": "The desired height of the element"
+        }
+      ]
+    },
+    {
+      "name": "smtt-wizard",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "name",
+          "description": "The title of wizard"
+        },
+        {
+          "name": "sub-heading",
+          "description": "The subHeading of wizard"
+        }
+      ]
+    },
+    {
+      "name": "smtt-wizard-step",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "active",
+          "description": "Whether step is active"
+        },
+        {
+          "name": "name",
+          "description": "The title of the wizard step"
+        },
+        {
+          "name": "sub-heading",
+          "description": "The subtitle of the wizard step"
+        }
+      ]
+    }
+  ]
+}

@@ -11,7 +11,7 @@ const alignmentOptions = {
   End: 'end'
 };
 
-export const ControlledWithKnobs = () => {
+export const Default = () => {
   const expanded = boolean('Expanded', false);
   const alignment = select('Alignment', alignmentOptions, 'start');
   const actionContent = text('Action Bar Content', 'String or HTML');
@@ -55,30 +55,28 @@ export const ControlledWithKnobs = () => {
   );
 };
 
-export const Default = () => {
-  return (
-    <smtt-accordion>
-      <smtt-accordion-item accordion-title="My test accordion">
-        Is simply dummy text of the printing and typesetting industry. Lorem
-        Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a
-        type specimen book.
-      </smtt-accordion-item>
-      <smtt-accordion-item accordion-title="My test accordion">
-        Is simply dummy text of the printing and typesetting industry. Lorem
-        Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a
-        type specimen book.
-      </smtt-accordion-item>
-      <smtt-accordion-item accordion-title="My test accordion">
-        Is simply dummy text of the printing and typesetting industry. Lorem
-        Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a
-        type specimen book.
-      </smtt-accordion-item>
-    </smtt-accordion>
-  );
-};
+export const FirstExpanded = () => (
+  <smtt-accordion>
+    <smtt-accordion-item accordion-title="My test accordion" expanded>
+      Is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+      has been the industry's standard dummy text ever since the 1500s, when an
+      unknown printer took a galley of type and scrambled it to make a type
+      specimen book.
+    </smtt-accordion-item>
+    <smtt-accordion-item accordion-title="My test accordion">
+      Is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+      has been the industry's standard dummy text ever since the 1500s, when an
+      unknown printer took a galley of type and scrambled it to make a type
+      specimen book.
+    </smtt-accordion-item>
+    <smtt-accordion-item accordion-title="My test accordion">
+      Is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+      has been the industry's standard dummy text ever since the 1500s, when an
+      unknown printer took a galley of type and scrambled it to make a type
+      specimen book.
+    </smtt-accordion-item>
+  </smtt-accordion>
+);
 
 export const WithActionBar = () => {
   return (
@@ -114,30 +112,7 @@ export const WithActionBar = () => {
   );
 };
 
-export const FirstExpanded = () => (
-  <smtt-accordion>
-    <smtt-accordion-item accordion-title="My test accordion" expanded>
-      Is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-      has been the industry's standard dummy text ever since the 1500s, when an
-      unknown printer took a galley of type and scrambled it to make a type
-      specimen book.
-    </smtt-accordion-item>
-    <smtt-accordion-item accordion-title="My test accordion">
-      Is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-      has been the industry's standard dummy text ever since the 1500s, when an
-      unknown printer took a galley of type and scrambled it to make a type
-      specimen book.
-    </smtt-accordion-item>
-    <smtt-accordion-item accordion-title="My test accordion">
-      Is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-      has been the industry's standard dummy text ever since the 1500s, when an
-      unknown printer took a galley of type and scrambled it to make a type
-      specimen book.
-    </smtt-accordion-item>
-  </smtt-accordion>
-);
-
-export const WithTree = () => {
+export const WithTreeContent = () => {
   const rows = [
     {
       group: 'Group A',

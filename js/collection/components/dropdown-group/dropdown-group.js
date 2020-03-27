@@ -1,9 +1,9 @@
-import { Host, h } from "@stencil/core";
+import { Component, Host, h, Prop } from '@stencil/core';
 export class DropdownGroup {
     render() {
         return (h(Host, null,
-            h("div", { class: "mb-6 px-3" },
-                h("span", { class: "text-xs font-weight-bold text-uppercase text-gray-100" }, this.name),
+            h("div", { class: "mb-6" },
+                h("span", { class: "text-xs font-weight-bold text-uppercase text-gray-100 px-5" }, this.name),
                 h("div", { class: "mt-3" },
                     h("slot", null)))));
     }

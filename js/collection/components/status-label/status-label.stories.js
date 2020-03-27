@@ -12,7 +12,7 @@ const variations = {
   Cancelled: 'cancelled'
 };
 
-export const ControlledWithKnobs = () => {
+export const Default = () => {
   const variation = select('Variation', variations, 'completed');
   const subtle = boolean('Subtle', false);
   const labelText = text('Status Label Text', 'Status Label Text');
@@ -24,26 +24,18 @@ export const ControlledWithKnobs = () => {
   );
 };
 
-export const Completed = () => {
-  return <smtt-status-label>Completed</smtt-status-label>;
-};
-export const Pending = () => {
-  return <smtt-status-label variation="pending">Pending</smtt-status-label>;
-};
 export const Cancelled = () => {
   return <smtt-status-label variation="cancelled">Failed</smtt-status-label>;
 };
 
-export const SubtleCompleted = () => {
-  return <smtt-status-label subtle>Completed</smtt-status-label>;
+export const Completed = () => {
+  return <smtt-status-label>Completed</smtt-status-label>;
 };
-export const SubtlePending = () => {
-  return (
-    <smtt-status-label subtle variation="pending">
-      Pending
-    </smtt-status-label>
-  );
+
+export const Pending = () => {
+  return <smtt-status-label variation="pending">Pending</smtt-status-label>;
 };
+
 export const SubtleCancelled = () => {
   return (
     <smtt-status-label subtle variation="cancelled">
@@ -51,13 +43,15 @@ export const SubtleCancelled = () => {
     </smtt-status-label>
   );
 };
-/**
- * <smtt-status-label subtle>Completed</smtt-status-label>
-    <smtt-status-label subtle variation="pending">Pending</smtt-status-label>
-    <smtt-status-label subtle variation="cancelled" >Failed</smtt-status-label>
-    <br>
 
-    <smtt-status-label>Completed</smtt-status-label>
-    <smtt-status-label variation="pending">Pending</smtt-status-label>
-    <smtt-status-label variation="cancelled" >Failed</smtt-status-label>
- */
+export const SubtleCompleted = () => {
+  return <smtt-status-label subtle>Completed</smtt-status-label>;
+};
+
+export const SubtlePending = () => {
+  return (
+    <smtt-status-label subtle variation="pending">
+      Pending
+    </smtt-status-label>
+  );
+};

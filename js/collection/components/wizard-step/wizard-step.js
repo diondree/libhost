@@ -1,4 +1,4 @@
-import { Host, h } from "@stencil/core";
+import { Component, Host, h, Prop } from '@stencil/core';
 export class WizardStep {
     constructor() {
         /**
@@ -13,8 +13,8 @@ export class WizardStep {
     render() {
         return (h(Host, null,
             h("div", { class: `wizard-step && ${this.active && 'd-block'}` },
-                h("h1", null, this.name),
-                h("p", null, this.subHeading),
+                h("h1", { class: "h1" }, this.name),
+                h("p", { class: "lead" }, this.subHeading),
                 h("slot", null))));
     }
     static get is() { return "smtt-wizard-step"; }

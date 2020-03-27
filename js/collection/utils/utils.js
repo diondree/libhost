@@ -17,3 +17,37 @@ export function closestElement(selector, base = this) {
     }
     return closestFrom(base);
 }
+export function colorSVGNodes(children, color) {
+    for (var i = 0; i < children.length; i++) {
+        const child = children[i];
+        if (child.nodeType === 1) {
+            /**
+             * The elements responsible for grouping graphical areas together
+             */
+            const structuralElements = ['defs', 'g', 'svg', 'symbol', 'use'];
+            /**
+             * The elements responsible for drawing things on the page are what we want to color
+             */
+            const graphicsElements = [
+                'circle',
+                'ellipse',
+                'foreignObject',
+                'image',
+                'line',
+                'path',
+                'polygon',
+                'polyline',
+                'rect',
+                'text',
+                'textPath',
+                'tspan'
+            ];
+            if (graphicsElements.includes(child.nodeName)) {
+                child.style.fill = color;
+            }
+            else if (structuralElements.includes(child.nodeName)) {
+                colorSVGNodes(child.childNodes, color);
+            }
+        }
+    }
+}

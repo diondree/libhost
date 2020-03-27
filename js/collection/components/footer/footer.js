@@ -1,4 +1,4 @@
-import { h } from "@stencil/core";
+import { Component, h, Prop } from '@stencil/core';
 export class Footer {
     render() {
         return (h("footer", { class: "smtt-footer" },

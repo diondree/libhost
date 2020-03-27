@@ -1,4 +1,4 @@
-import { Host, h } from "@stencil/core";
+import { Component, Host, h, State, Prop, Element, Listen, Watch } from '@stencil/core';
 import { closestElement } from '../../utils/utils';
 export class Dropdown {
     constructor() {
@@ -7,9 +7,17 @@ export class Dropdown {
          */
         this.fullWidth = false;
         /**
+         * Whether or not the dropdown should align from the right side
+         */
+        this.alignRight = false;
+        /**
          * Whether or not the dropdown is open
          */
         this.open = false;
+        /**
+         * Whether or not Dropdown items has icon
+         */
+        this.hasIcons = false;
     }
     /**
      * Handler to determine if the dropdown should remain open or close
@@ -26,16 +34,28 @@ export class Dropdown {
     toggleDropdown() {
         this.open = !this.open;
     }
+    componentWillLoad() {
+        console.log('component will load');
+        this.updateItems();
+    }
+    updateItems() {
+        console.log('function called');
+        const children = Array.from(this.el.children);
+        children.forEach(item => {
+            item.hasIcon = this.hasIcons;
+        });
+    }
     render() {
         return (h(Host, null,
             h("div", { class: `h-100 d-flex align-items-center position-relative ${!this
-                    .fullWidth && 'min-w-10'}` },
+                    .fullWidth && 'max-w-10'}` },
                 h("smtt-button", { theme: "tertiary", class: `dropdown d-flex align-items-center justify-content-between button__content ${this
-                        .fullWidth && 'w-100'}`, onClick: () => this.toggleDropdown(), "aria-haspopup": "menu", "aria-expanded": this.open, variation: "icon-label", icon: "angle-down", "full-height": true, "icon-right": true, alignment: "left" },
+                        .fullWidth && 'w-100'}`, onClick: () => this.toggleDropdown(), "aria-haspopup": "menu", "aria-expanded": `${this.open}`, variation: !this.name ? 'icon' : 'icon-label', icon: this.icon ? this.icon : `angle-down`, "full-height": true, "icon-right": this.name && true, alignment: !this.name ? 'center' : 'left' },
                     h("div", { class: "d-flex flex-column justify-content-center" },
                         h("span", { class: "text-sm" }, this.name),
                         h("span", { class: "text-xs text-gray-100 align-self-end" }, this.subHeading))),
-                h("ul", { class: `p-5 dropdown-menu dropdown-menu--border mt-2 ${this.open ? 'show' : ''} ${this.fullWidth && 'w-100'}`, role: "menu", style: this.size && { width: `${this.size}px` } },
+                h("ul", { class: `dropdown-menu dropdown-menu--border mt-2 ${this.open ? 'show' : ''} ${this.fullWidth ? 'w-100' : 'min-w-10'} ${this.alignRight &&
+                        'dropdown-menu--right'}`, role: "menu", style: this.size && { width: `${this.size}px` } },
                     h("slot", null)))));
     }
     static get is() { return "smtt-dropdown"; }
@@ -115,12 +135,69 @@ export class Dropdown {
             },
             "attribute": "size",
             "reflect": false
+        },
+        "icon": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "The name of the icon to be used as button trigger"
+            },
+            "attribute": "icon",
+            "reflect": false
+        },
+        "alignRight": {
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "Whether or not the dropdown should align from the right side"
+            },
+            "attribute": "align-right",
+            "reflect": false,
+            "defaultValue": "false"
+        },
+        "hasIcons": {
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "Whether or not Dropdown items has icon"
+            },
+            "attribute": "has-icons",
+            "reflect": false,
+            "defaultValue": "false"
         }
     }; }
     static get states() { return {
         "open": {}
     }; }
     static get elementRef() { return "el"; }
+    static get watchers() { return [{
+            "propName": "hasIcons",
+            "methodName": "updateItems"
+        }]; }
     static get listeners() { return [{
             "name": "click",
             "method": "handleClick",

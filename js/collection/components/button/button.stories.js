@@ -25,7 +25,7 @@ const buttonThemes = {
   Tertiary: 'tertiary'
 };
 
-export const ControlledWithKnobs = () => {
+export const Default = () => {
   const variation = select('Variation', buttonVariations, 'label');
   const size = select('Size', buttonSizes, '');
   const theme = select('Theme', buttonThemes, 'primary');
@@ -50,34 +50,34 @@ export const ControlledWithKnobs = () => {
 /**
  * Buttons - Label
  */
-export const LabelPrimary = () => (
+export const Primary = () => (
   <smtt-button theme="primary">Click Me</smtt-button>
 );
 
-export const LabelSecondary = () => (
+export const Secondary = () => (
   <smtt-button theme="default">Click Me</smtt-button>
 );
 
-export const LabelTertiary = () => (
+export const Tertiary = () => (
   <smtt-button theme="tertiary">Click Me</smtt-button>
 );
 
 /**
  * Buttons - Icon + Label
  */
-export const LabelAndIconPrimary = () => (
+export const PrimaryWithIcon = () => (
   <smtt-button variation="icon-label" icon="states-complete" theme="primary">
     Click Me
   </smtt-button>
 );
 
-export const LabelAndIconSecondary = () => (
+export const SecondaryWithIcon = () => (
   <smtt-button variation="icon-label" icon="states-complete" theme="default">
     Click Me
   </smtt-button>
 );
 
-export const LabelAndIconTertiary = () => (
+export const TertiaryWithIcon = () => (
   <smtt-button variation="icon-label" icon="states-complete" theme="tertiary">
     Click Me
   </smtt-button>
@@ -86,7 +86,7 @@ export const LabelAndIconTertiary = () => (
 /**
  * Buttons - Icon
  */
-export const IconPrimary = () => {
+export const IconOnlyPrimary = () => {
   return (
     <smtt-button
       variation="icon"
@@ -96,7 +96,7 @@ export const IconPrimary = () => {
   );
 };
 
-export const IconSecondary = () => {
+export const IconOnlySecondary = () => {
   return (
     <smtt-button
       variation="icon"
@@ -106,7 +106,7 @@ export const IconSecondary = () => {
   );
 };
 
-export const IconTertiary = () => {
+export const IconOnlyTertiary = () => {
   return (
     <smtt-button
       variation="icon"

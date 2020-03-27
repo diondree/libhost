@@ -1,4 +1,4 @@
-import { Host, h } from "@stencil/core";
+import { Component, Host, h, Prop } from '@stencil/core';
 export class DropdownItem {
     constructor() {
         /**
@@ -11,9 +11,10 @@ export class DropdownItem {
         this.target = '_self';
     }
     render() {
-        return (h(Host, null,
+        return (h(Host, { role: "menuitem" },
             h("li", { class: "dropdown-item text-sm" },
-                h("a", { class: "dropdown-item__link d-flex p-3", href: this.href, target: this.target },
+                h("a", { class: "dropdown-item__link d-flex py-3 px-5", href: this.href, target: this.target },
+                    this.hasIcon && (h("span", { class: "mr-2", style: { height: '24px', width: '24px' } }, this.icon ? (h("smtt-icon", { icon: this.icon })) : (h("div", { style: { width: '24px', height: '24px' } })))),
                     h("slot", null)))));
     }
     static get is() { return "smtt-dropdown-item"; }
@@ -60,6 +61,40 @@ export class DropdownItem {
             "attribute": "target",
             "reflect": false,
             "defaultValue": "'_self'"
+        },
+        "icon": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "Icon to be displayed to left of the text"
+            },
+            "attribute": "icon",
+            "reflect": false
+        },
+        "hasIcon": {
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "Whether or not item has icon"
+            },
+            "attribute": "has-icon",
+            "reflect": true
         }
     }; }
 }

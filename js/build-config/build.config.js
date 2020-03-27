@@ -2,9 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const argv = require('yargs').argv;
 
-const componentFiles = fs.readdirSync(
-  path.join(__dirname, '../pegasus-core/svg')
-);
+const componentFiles = fs.readdirSync(path.join(__dirname, '../smtt-ds/svg'));
 
 function bundleImages(distFolder) {
   for (let i = 0; i < componentFiles.length; i++) {
@@ -16,7 +14,7 @@ function bundleImages(distFolder) {
 
     // destination folder will be created or overwritten by default.
     fs.copyFile(
-      path.join(__dirname, '../pegasus-core/svg', image),
+      path.join(__dirname, '../smtt-ds/svg', image),
       `${distFolder}/svg/${image}`,
       err => {
         if (err) {
@@ -31,4 +29,4 @@ if (argv.path) {
   bundleImages(argv.path);
 }
 
-module.exports = bundleImages
+module.exports = bundleImages;

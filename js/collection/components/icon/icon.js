@@ -1,11 +1,25 @@
-import { Host, h, getAssetPath } from "@stencil/core";
+import { Component, Host, h, State, Method, Prop, Watch, getAssetPath } from '@stencil/core';
+/** @todo no need for 2 js files containing util functions (could it possibly reduce bloat later down?) */
 import { getSvgContent, createNodeFromString } from './util';
+import { colorSVGNodes } from '../../utils/utils';
 export class SmartIcons {
     constructor() {
         /**
          * The label for the icon
          */
         this.label = 'icon';
+        this.loadRequestedIcons();
+    }
+    /** @todo make this function run everytime the property is changed */
+    loadRequestedIcons() {
+        if (this.preload) {
+            let icons = this.preload.split(',');
+            for (let icon of icons) {
+                const svg = `svg/${icon}.svg`;
+                const url = getAssetPath(svg);
+                getSvgContent(url);
+            }
+        }
     }
     connectedCallback() {
         this.loadIcon();
@@ -14,25 +28,18 @@ export class SmartIcons {
     async addStyling(content) {
         /* create node */
         const contentNode = createNodeFromString(content);
-        const children = contentNode.firstChild.childNodes;
+        const SVGElement = contentNode.firstChild;
+        const children = SVGElement.childNodes;
         /* configure sizing */
         if (this.width) {
             /* all images currently have an aspect ratio of 1:1 so the width == height */
-            // @ts-ignore
-            contentNode.firstChild.style.height = this.width;
-            // @ts-ignore
-            contentNode.firstChild.style.width = this.width;
+            SVGElement.style.height = this.width;
+            SVGElement.style.width = this.width;
         }
         /* configure color */
         if (this.color) {
             /* for each of the paths inside the svg we want to color them with the color specified in the property */
-            for (var i = 0; i < children.length; i++) {
-                const child = children[i];
-                if (child.nodeType === 1 && child.nodeName === 'path') {
-                    // @ts-ignore
-                    child.style.fill = this.color;
-                }
-            }
+            colorSVGNodes(children, this.color);
         }
         this.svgContent = contentNode.innerHTML;
         return contentNode;
@@ -44,10 +51,10 @@ export class SmartIcons {
         this.svgContent = contentNode.innerHTML;
     }
     loadIcon() {
-        const svg = `svg/${this.icon}.svg`;
-        const url = getAssetPath(svg);
         /** get svg content to place in the DOM */
         if (this.icon) {
+            const svg = `svg/${this.icon}.svg`;
+            const url = getAssetPath(svg);
             getSvgContent(url).then(content => {
                 this.svgContent = content;
                 /* add developer defined styling to the icon */
@@ -86,7 +93,7 @@ export class SmartIcons {
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "icon name"
             },
             "attribute": "icon",
             "reflect": false
@@ -103,7 +110,7 @@ export class SmartIcons {
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "icon color"
             },
             "attribute": "color",
             "reflect": false
@@ -119,7 +126,10 @@ export class SmartIcons {
             "required": false,
             "optional": false,
             "docs": {
-                "tags": [],
+                "tags": [{
+                        "text": "[WIP] type of icon we have",
+                        "name": "todo"
+                    }],
                 "text": ""
             },
             "attribute": "type",
@@ -137,7 +147,7 @@ export class SmartIcons {
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "theme to be applied to the button"
             },
             "attribute": "theme",
             "reflect": false
@@ -153,7 +163,10 @@ export class SmartIcons {
             "required": false,
             "optional": false,
             "docs": {
-                "tags": [],
+                "tags": [{
+                        "text": "[WIP] wether the image is in a disabled state",
+                        "name": "todo"
+                    }],
                 "text": ""
             },
             "attribute": "disabled",
@@ -171,7 +184,7 @@ export class SmartIcons {
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": ""
+                "text": "width of the svg"
             },
             "attribute": "width",
             "reflect": false
@@ -193,6 +206,23 @@ export class SmartIcons {
             "attribute": "label",
             "reflect": false,
             "defaultValue": "'icon'"
+        },
+        "preload": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "comma seperated values representing any images to be preloaded"
+            },
+            "attribute": "preload",
+            "reflect": false
         }
     }; }
     static get states() { return {

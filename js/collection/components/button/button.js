@@ -1,4 +1,4 @@
-import { h, Host } from "@stencil/core";
+import { Component, Prop, h, Host } from '@stencil/core';
 export class Button {
     constructor() {
         /**
@@ -27,6 +27,9 @@ export class Button {
          * Whether icon should be displayed to the left or the right
          */
         this.iconRight = false;
+        this.focus = (options) => {
+            this.button.focus(options);
+        };
     }
     onClick(type) {
         if (type === 'confirm') {
@@ -42,12 +45,12 @@ export class Button {
             : 'justify-content-end';
         const alignCenter = !this.alignment && 'justify-content-center';
         return (h(Host, null,
-            h("button", { disabled: !!this.disabled, class: `btn btn-${this.theme === 'secondary' ? 'default' : this.theme} d-inline-flex align-items-center ${this.size &&
+            h("button", { ref: ref => (this.button = ref), disabled: !!this.disabled, class: `btn btn-${this.theme === 'secondary' ? 'default' : this.theme} d-inline-flex align-items-center ${this.size &&
                     `btn-${this.size}`} ${this.fullHeight && 'h-100'} ${this
                     .fullWidth && `w-100 ${alignCenter}`} ${this.iconRight &&
                     'flex-row-reverse'} ${this.alignment === 'left' &&
                     `${alignLeft} pl-0`} ${this.alignment === 'right' &&
-                    `${alignRight} pr-0`}`, type: this.type, onClick: () => this.onClick(this.type), "aria-disabled": "true" },
+                    `${alignRight} pr-0`}`, type: this.type, onClick: () => this.onClick(this.type), "aria-disabled": `${this.disabled}` },
                 ['icon', 'icon-label'].includes(this.variation) ? (h("smtt-icon", { class: `btn__icon${this.variation === 'icon-label' ? '--label' : ''} ${this.iconRight && 'm-0 ml-1'}`, style: Object.assign({}, this.iconStyle), type: "btn-icon", icon: this.icon, width: this.size === 'sm' ? '20px' : '24px' })) : null,
                 ['label', 'icon-label'].includes(this.variation) ? (h("slot", null)) : null)));
     }
@@ -60,6 +63,25 @@ export class Button {
         "$": ["button.css"]
     }; }
     static get properties() { return {
+        "button": {
+            "type": "unknown",
+            "mutable": false,
+            "complexType": {
+                "original": "HTMLElement",
+                "resolved": "HTMLElement",
+                "references": {
+                    "HTMLElement": {
+                        "location": "global"
+                    }
+                }
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "reference to the button element"
+            }
+        },
         "disabled": {
             "type": "boolean",
             "mutable": false,
@@ -251,6 +273,26 @@ export class Button {
             },
             "attribute": "alignment",
             "reflect": false
+        },
+        "focus": {
+            "type": "unknown",
+            "mutable": false,
+            "complexType": {
+                "original": "(options?: FocusOptions) => void",
+                "resolved": "(options?: FocusOptions) => void",
+                "references": {
+                    "FocusOptions": {
+                        "location": "global"
+                    }
+                }
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            },
+            "defaultValue": "(options) => {\n    this.button.focus(options);\n  }"
         }
     }; }
 }

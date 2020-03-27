@@ -1,3 +1,7 @@
+import { EventEmitter } from '../../stencil-public-runtime';
+export interface InputChangeEventDetail {
+    value: string | undefined | number | null;
+}
 export declare class Input {
     /** id to be given to input element */
     name: string;
@@ -27,6 +31,20 @@ export declare class Input {
     form: string;
     /**custom validator to be passed in to determing if the form field is "valid" */
     customValidator: Function;
+    /** autofocus on element */
+    autofocus: boolean;
+    /** If the input field should  */
+    icon: string;
+    /** Event emitted when icon is clicked */
+    iconClick: EventEmitter<void>;
+    /** Whether or not the state of the input should be invalid */
+    isInvalid: boolean;
+    /** Attribute to trigger active style on input */
+    isActive: boolean;
+    /** Whether or not to validate input on blur */
+    validateOnBlur: boolean;
+    /** Properties/attributes to pass to label */
+    labelProps: any;
     /** wether input is valid */
     isValid: boolean;
     /** if the password is currently visible */
@@ -65,6 +83,7 @@ export declare class Input {
         valid?: string;
         valueMissing?: true;
     };
+    focus: (options?: FocusOptions) => void;
     inputEl: HTMLInputElement;
     passwordRevealToggle: HTMLSmttIconElement;
     componentDidLoad(): void;
@@ -72,8 +91,21 @@ export declare class Input {
     validity: Function;
     /** wether input is valid or not considering its constraints */
     checkValidity: Function;
+    /**
+     * Emitted when a keyboard input occurred.
+     */
+    inputChange: EventEmitter<KeyboardEvent>;
+    /**
+     * Emitted when the value has changed.
+     */
+    inputValueChange: EventEmitter<InputChangeEventDetail>;
     /** current value of the input element */
-    value: Function;
+    value?: string | number | null;
+    /**
+     * Update the native input element when the value changes
+     */
+    protected valueChanged(): void;
+    private onInput;
     updateValidity(): void;
     getPattern(): void;
     render(): any;

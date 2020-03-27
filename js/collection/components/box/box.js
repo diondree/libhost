@@ -1,4 +1,4 @@
-import { h } from "@stencil/core";
+import { Component, Prop, h } from '@stencil/core';
 export class Box {
     constructor() {
         /** the positioning for the label 'top', 'right', 'left', or 'bottom' */

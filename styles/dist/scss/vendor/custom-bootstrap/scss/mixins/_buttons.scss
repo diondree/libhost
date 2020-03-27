@@ -1,0 +1,41 @@
+@mixin no-outline {
+  &::-moz-focus-inner {
+    border: 0;
+  }
+  &:focus {
+    outline: 0;
+  }
+}
+
+@mixin theme-btn($type) {
+  @include no-outline;
+  $map: getColorMap($type);
+  color: map-get-deep($map, 'enable', 'col');
+  background-color: map-get-deep($map, 'enable', 'bg');
+  // border: 1px solid map-get-deep($map, 'enable', 'border');
+
+  &:hover {
+    color: map-get-deep($map, 'hover', 'col');
+    background-color: map-get-deep($map, 'hover', 'bg');
+  }
+
+  &:not(:disabled):not(.disabled):active, 
+  &:not(:disabled):not(.disabled).active, 
+  .show > &.dropdown-toggle {
+    background-color: map-get-deep($map, 'active', 'bg');
+  }
+
+  &:focus {
+    $border-color: map-get-deep($map, 'focus', 'border');
+    @if($border-color != null){
+      border: 2px solid $border-color;
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: map-get-deep($map, 'disable', 'bg');
+    color: map-get-deep($map, 'disable', 'col');
+    border-color: map-get-deep($map, 'disable', 'border');
+  }
+}

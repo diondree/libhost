@@ -1,1 +1,0 @@
-System.register([],(function(e){"use strict";return{execute:function(){e({c:n,h:t});function t(e){var t=document.createElement("textarea");t.innerHTML=e;return t.childNodes.length===0?"":t.childNodes[0].nodeValue}function n(e,t){if(t===void 0){t=this}function n(t){if(!t||t===document||t===window){return null}var r=t.closest(e);return r?r:n(t.getRootNode().host)}return n(t)}}}}));

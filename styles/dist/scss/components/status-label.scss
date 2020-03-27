@@ -1,0 +1,42 @@
+@import '../vendor/bootstrap/scss/functions';
+@import '../vendor/custom-bootstrap/scss/variables-and-overwrites';
+@import '../vendor/bootstrap/scss/variables';
+@import '../vendor/bootstrap/scss/mixins';
+// @import "../vendor/bootstrap/scss/utilities";
+@import '../vendor/custom-bootstrap/scss/badge';
+
+.badge--subtle {
+  border: 0;
+  .badge__status-text {
+    margin-left: 10px;
+  }
+  &:before {
+    display: block;
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  &--completed {
+    &:before {
+      background-color: var(--green-base);
+      border: 1px solid var(--green-dark);
+    }
+    color: var(--green-darker);
+  }
+  &--cancelled {
+    &:before {
+      background-color: var(--red-base);
+      border: 1px solid var(--red-dark);
+    }
+    color: var(--red-darker);
+  }
+  &--pending {
+    &:before {
+      background-color: var(--yellow-base);
+      border: 1px solid var(--yellow-dark);
+    }
+    color: var(--yellow-darker);
+  }
+}

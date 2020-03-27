@@ -6,15 +6,11 @@ export default {
   decorators: [withKnobs]
 };
 
-export const ControlledWithKnobs = () => {
+export const Default = () => {
   const hash = text('Footer hash', '');
 
   return <smtt-footer hash={hash}></smtt-footer>;
 };
-export const FooterWithHash = () => {
-  return <smtt-footer hash='vjiew98rfjv0r935ut498efwco'></smtt-footer>;
+export const WithHash = () => {
+  return <smtt-footer hash="vjiew98rfjv0r935ut498efwco"></smtt-footer>;
 };
-export const FooterWithoutHash = () => {
-  return <smtt-footer ></smtt-footer>;
-};
-

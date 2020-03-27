@@ -3,7 +3,7 @@ import React from 'react';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Tree',
+  title: 'Tree (POC)',
   decorators: [withKnobs]
 };
 

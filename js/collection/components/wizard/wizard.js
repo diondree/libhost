@@ -1,4 +1,4 @@
-import { Host, h } from "@stencil/core";
+import { Component, Host, h, State, Element, Prop, Watch } from '@stencil/core';
 export class Wizard {
     constructor() {
         /**
@@ -38,14 +38,10 @@ export class Wizard {
     componentWillLoad() {
         this.initSteps();
     }
-    // @Watch()
     initSteps() {
         const stepNodes = this.getStepNodes();
-        console.log(stepNodes);
-        console.log(stepNodes[0]);
         stepNodes[0].active = true;
         const steps = stepNodes.map(step => step.name);
-        console.log(steps);
         this.steps = steps;
     }
     changeStep(newStep, oldStep) {
@@ -63,15 +59,17 @@ export class Wizard {
         var _a;
         return (h(Host, null,
             h("div", { class: "col--xs--12" },
-                h("div", { class: `welcome-container h-500 ${this.inProgress && 'd-none'}` },
-                    h("h1", { class: "text-lg" }, this.name),
-                    h("p", { class: "text-md m-0" }, this.subHeading),
-                    h("ul", { class: "steps" }, this.steps.map((step, index) => (h("li", { class: "step" },
-                        h("div", { class: "d-flex flex-column justify-center" },
-                            h("div", { class: "step__number" },
-                                h("span", null, index + 1)),
-                            h("span", { class: "step__label" }, step)),
-                        this.steps.length !== index + 1 && (h("span", { class: "step__divider" })))))),
+                h("div", { class: `welcome-container h-600 ${this.inProgress && 'd-none'}` },
+                    h("h1", { class: "h1" }, this.name),
+                    h("div", { class: "mw-50 text-center" },
+                        h("p", { class: "lead text-md m-0" }, this.subHeading)),
+                    h("ul", { class: "steps justify-content-center" }, this.steps.map((step, index) => (h("li", { class: `d-flex` },
+                        h("div", { class: "step" },
+                            h("div", { class: "d-flex flex-column mw-128" },
+                                h("div", { class: "step__number" },
+                                    h("span", null, index + 1)),
+                                h("span", { class: "step__label h6" }, step)),
+                            this.steps.length !== index + 1 && (h("span", { class: "step__divider" }))))))),
                     h("smtt-button", { size: "lg", onClick: () => (this.inProgress = true) }, "Start Process")),
                 h("div", { class: `${!this.inProgress ? 'd-none' : 'd-flex w-100'}` },
                     h("div", { class: "d-flex justify-content-center w-25" },
@@ -80,10 +78,10 @@ export class Wizard {
                                 h("div", { class: `step__number step__number--column ${this
                                         .step === index && 'step__number--active'} ${this
                                         .step > index && 'step__number--checked'}` }, this.step > index ? (h("smtt-icon", { icon: "check", color: "var(--turquoise-deep-base)" })) : (h("span", null, index + 1))),
-                                h("span", { class: `step__label ml-3 step__label--column ${this
+                                h("span", { class: `step__label h6 ml-3 step__label--column ${this
                                         .step === index && 'step__label--active'}` }, step)),
-                            this.steps.length !== index + 1 && (h("span", { class: `step__divider step__divider--column  ${this
-                                    .step > index && 'step__divider--checked'}` }))))))),
+                            this.steps.length !== index + 1 && (h("span", { class: `step__divider--column  ${this.step > index &&
+                                    'step__divider--checked'}` }))))))),
                     h("div", { class: "step-container w-75" },
                         h("div", { class: "d-flex step-content" },
                             h("slot", null)),

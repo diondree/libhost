@@ -1,4 +1,4 @@
-import { Host, h } from "@stencil/core";
+import { Component, Host, h, Prop } from '@stencil/core';
 export class Header {
     constructor() {
         /**
@@ -47,7 +47,7 @@ export class Header {
                                 h("smtt-button", { variation: "icon", theme: "tertiary", icon: "bell", "full-height": true, size: "sm" }),
                                 h("smtt-button", { variation: "icon", theme: "tertiary", icon: "question-circle", "full-height": true, size: "sm" }),
                                 h("smtt-button", { variation: "icon", theme: "tertiary", icon: "cog", "full-height": true, size: "sm" }),
-                                h("smtt-dropdown", { class: "user-dropdown", name: this.userMenuTitle, "menu-position": "left", "sub-heading": "Role", "full-width": true },
+                                h("smtt-dropdown", { class: "user-dropdown", name: this.userMenuTitle, "menu-position": "left", "sub-heading": "Role", "full-width": true, "align-right": true },
                                     h("slot", { name: "user-menu-items" })))))),
                 this.breadcrumb && (h("div", { class: "col--md--12 p-0" },
                     h("div", { class: "jumbotron mb-0 text-lg radius-0" },

@@ -20,9 +20,21 @@ export declare class Dropdown {
      */
     size: number;
     /**
+     * The name of the icon to be used as button trigger
+     */
+    icon: string;
+    /**
+     * Whether or not the dropdown should align from the right side
+     */
+    alignRight: boolean;
+    /**
      * Whether or not the dropdown is open
      */
     open: boolean;
+    /**
+     * Whether or not Dropdown items has icon
+     */
+    hasIcons: boolean;
     /**
      * Handler to determine if the dropdown should remain open or close
      *
@@ -30,5 +42,7 @@ export declare class Dropdown {
      */
     handleClick(e: MouseEvent): void;
     private toggleDropdown;
+    componentWillLoad(): void;
+    updateItems(): void;
     render(): any;
 }

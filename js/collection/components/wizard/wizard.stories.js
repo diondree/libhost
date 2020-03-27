@@ -23,39 +23,99 @@ export const Default = () => {
     'Subheading/Instructions',
     'In this area, the user can find the task instructions. The instructions can be displayed on two lines.'
   );
-  // control number of steps
-  const stepNumber = select('Number of steps', stepOptions, 4);
-
-  const steps = [
-    <smtt-wizard-step name="Change admin password" sub-heading="Instructions">
-      <div>
-        <smtt-input name="name" label="Name"></smtt-input>
-      </div>
-    </smtt-wizard-step>,
-    <smtt-wizard-step
-      name="Two-Factor authentication"
-      sub-heading="Instructions"
-    >
-      Step content 2
-    </smtt-wizard-step>,
-    <smtt-wizard-step name="Create System Admin" sub-heading="Instructions">
-      Step content 3
-    </smtt-wizard-step>,
-    <smtt-wizard-step
-      name="Change database user password"
-      sub-heading="Instructions"
-    >
-      Step content 4
-    </smtt-wizard-step>
-  ];
-
-  steps.splice(stepNumber);
-  console.log('dreger');
-  console.log(steps);
 
   return (
     <smtt-wizard name={name} sub-heading={subHeading}>
-      {steps.map(step => step)}
+      <smtt-wizard-step name="Change admin password" sub-heading="Instructions">
+        <div>
+          <smtt-input name="name" label="Name"></smtt-input>
+        </div>
+      </smtt-wizard-step>
+
+      <smtt-wizard-step
+        name="Two-Factor authentication"
+        sub-heading="Instructions"
+      >
+        Step content 2
+      </smtt-wizard-step>
+
+      <smtt-wizard-step name="Create System Admin" sub-heading="Instructions">
+        Step content 3
+      </smtt-wizard-step>
+
+      <smtt-wizard-step
+        name="Change database user password"
+        sub-heading="Instructions"
+      >
+        Step content 4
+      </smtt-wizard-step>
+    </smtt-wizard>
+  );
+};
+
+export const EightSteps = () => {
+  return (
+    <smtt-wizard
+      name="Name of the task"
+      sub-heading="In this area, the user can find the task instructions. The instructions can be displayed on two lines."
+    >
+      <smtt-wizard-step
+        key="Change admin password"
+        name="Change admin password"
+        sub-heading="Instructions"
+      >
+        <div>
+          <smtt-input name="name" label="Name"></smtt-input>
+        </div>
+      </smtt-wizard-step>
+
+      <smtt-wizard-step
+        key="Two-Factor authentication"
+        name="Two-Factor authentication"
+        sub-heading="Instructions"
+      >
+        Step content 2
+      </smtt-wizard-step>
+
+      <smtt-wizard-step
+        key="Create System Admin"
+        name="Create System Admin"
+        sub-heading="Instructions"
+      >
+        Step content 3
+      </smtt-wizard-step>
+
+      <smtt-wizard-step
+        key="Change database user password"
+        name="Change database user password"
+        sub-heading="Instructions"
+      >
+        Step content 4
+      </smtt-wizard-step>
+      <smtt-wizard-step
+        key="Deployment information"
+        name="Deployment information"
+        sub-heading="Instructions"
+      >
+        Step content 5
+      </smtt-wizard-step>
+      <smtt-wizard-step
+        key="Security information"
+        name="Security information"
+        sub-heading="Instructions"
+      >
+        Step content 6
+      </smtt-wizard-step>
+      <smtt-wizard-step
+        key="Another step name goes here"
+        name="Another step name goes here"
+        sub-heading="Instructions"
+      >
+        Step content 7
+      </smtt-wizard-step>
+      <smtt-wizard-step key="Review" name="Review" sub-heading="Instructions">
+        Step content 8
+      </smtt-wizard-step>
     </smtt-wizard>
   );
 };
