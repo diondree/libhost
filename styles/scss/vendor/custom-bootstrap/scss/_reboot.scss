@@ -42,15 +42,16 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 // 2. As a best practice, apply a default `background-color`.
 // 3. Set an explicit initial text-align value so that we can later use
 //    the `inherit` value on things like `<th>` elements.
-
 body {
+  color: $body-color;
+  background-color: $body-bg; // 2
+}
+body, :host {
   margin: 0; // 1
   font-family: $font-family-base;
   font-weight: $font-weight-base;
   line-height: $line-height-base;
-  color: $body-color;
   text-align: left; // 3
-  background-color: $body-bg; // 2
 
   @include media-breakpoint-down(xxl) {
     font-size: 1.125rem;

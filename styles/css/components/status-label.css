@@ -1,5 +1,4 @@
 /** -----------------VALUES-----------------*/
-/** -----------------MAPPINGS-----------------*/
 /* turquoise */
 /* turquoise-deep */
 /* red */
@@ -8,6 +7,11 @@
 /* silver */
 /* ink */
 /* generic */
+/** -----------------MAPPINGS-----------------*/
+/** 
+* NB: these mixin/function files simply serve to override the definition of individual mixins/functions and will implement only those mixins 
+* they DO NOT replace the entire bootstrap mixin/function file, or any other individual mixin/function file
+*/
 .badge {
   display: inline-block;
   padding: 0.25em 0.4em;
@@ -37,40 +41,40 @@
   border-radius: 10rem; }
 
 .badge--primary {
-  color: #ffffff;
-  background-color: #265966; }
+  color: #fff;
+  background-color: #007bff; }
   a.badge--primary:hover, a.badge--primary:focus {
-    color: #ffffff;
-    background-color: #183941; }
+    color: #fff;
+    background-color: #0062cc; }
   a.badge--primary:focus, a.badge--primary.focus {
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(38, 89, 102, 0.5); }
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); }
 
 .badge--secondary {
-  color: #ffffff;
+  color: #fff;
   background-color: #6c757d; }
   a.badge--secondary:hover, a.badge--secondary:focus {
-    color: #ffffff;
+    color: #fff;
     background-color: #545b62; }
   a.badge--secondary:focus, a.badge--secondary.focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5); }
 
 .badge--success {
-  color: #ffffff;
+  color: #fff;
   background-color: #28a745; }
   a.badge--success:hover, a.badge--success:focus {
-    color: #ffffff;
+    color: #fff;
     background-color: #1e7e34; }
   a.badge--success:focus, a.badge--success.focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5); }
 
 .badge--info {
-  color: #ffffff;
+  color: #fff;
   background-color: #17a2b8; }
   a.badge--info:hover, a.badge--info:focus {
-    color: #ffffff;
+    color: #fff;
     background-color: #117a8b; }
   a.badge--info:focus, a.badge--info.focus {
     outline: 0;
@@ -87,10 +91,10 @@
     box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5); }
 
 .badge--danger {
-  color: #ffffff;
+  color: #fff;
   background-color: #dc3545; }
   a.badge--danger:hover, a.badge--danger:focus {
-    color: #ffffff;
+    color: #fff;
     background-color: #bd2130; }
   a.badge--danger:focus, a.badge--danger.focus {
     outline: 0;
@@ -107,10 +111,10 @@
     box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5); }
 
 .badge--dark {
-  color: #ffffff;
+  color: #fff;
   background-color: #343a40; }
   a.badge--dark:hover, a.badge--dark:focus {
-    color: #ffffff;
+    color: #fff;
     background-color: #1d2124; }
   a.badge--dark:focus, a.badge--dark.focus {
     outline: 0;
