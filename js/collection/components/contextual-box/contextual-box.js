@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element, State, Watch, Listen } from '@stencil/core';
+import { Host, h } from "@stencil/core";
 export class ContextualBox {
     constructor() {
         /**

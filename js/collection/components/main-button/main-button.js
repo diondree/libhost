@@ -1,4 +1,4 @@
-import { Component, Prop, h, Host } from '@stencil/core';
+import { h, Host } from "@stencil/core";
 export class Button {
     constructor() {
         /**

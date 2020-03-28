@@ -1,4 +1,4 @@
-import { EventEmitter } from '../../stencil-public-runtime';
+import { EventEmitter } from '../../stencil.core';
 import { RowSelectedEvent } from '@ag-grid-enterprise/all-modules';
 export declare type ColumnDefinition = {
     headerName: string;

@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, State, Element, Watch } from '@stencil/core';
+import { Host, h } from "@stencil/core";
 import { htmlDecode } from '../../utils/utils';
 export class AccordionItem {
     constructor() {

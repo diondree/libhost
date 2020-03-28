@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Method, Prop, Watch, getAssetPath } from '@stencil/core';
+import { Host, h, getAssetPath } from "@stencil/core";
 /** @todo no need for 2 js files containing util functions (could it possibly reduce bloat later down?) */
 import { getSvgContent, createNodeFromString } from './util';
 import { colorSVGNodes } from '../../utils/utils';

@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Method, Element } from '@stencil/core';
+import { Host, h } from "@stencil/core";
 import { Notyf } from './vendor/notyf/build/notyf.es.js';
 export class Toast {
     constructor() {

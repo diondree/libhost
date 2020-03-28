@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Host, h } from "@stencil/core";
 export class Separator {
     render() {
         return (h(Host, null,

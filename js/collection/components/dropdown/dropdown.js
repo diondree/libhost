@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Prop, Element, Listen, Watch } from '@stencil/core';
+import { Host, h } from "@stencil/core";
 import { closestElement } from '../../utils/utils';
 export class Dropdown {
     constructor() {

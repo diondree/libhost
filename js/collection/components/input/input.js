@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Listen, State, Watch, Event } from '@stencil/core';
+import { Host, h } from "@stencil/core";
 export class Input {
     constructor() {
         /** id to be applied to input field */

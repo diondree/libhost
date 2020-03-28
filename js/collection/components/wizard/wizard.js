@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Element, Prop, Watch } from '@stencil/core';
+import { Host, h } from "@stencil/core";
 export class Wizard {
     constructor() {
         /**

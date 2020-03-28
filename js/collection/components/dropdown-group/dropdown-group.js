@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Host, h } from "@stencil/core";
 export class DropdownGroup {
     render() {
         return (h(Host, null,

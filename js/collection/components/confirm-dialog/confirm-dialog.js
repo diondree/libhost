@@ -1,4 +1,4 @@
-import { Component, h, Prop, Method, Host } from '@stencil/core';
+import { h, Host } from "@stencil/core";
 import tippy from 'tippy.js';
 export class ConfirmDialog {
     componentDidLoad() {

@@ -13,7 +13,7 @@
 * NB: these mixin/function files simply serve to override the definition of individual mixins/functions and will implement only those mixins 
 * they DO NOT replace the entire bootstrap mixin/function file, or any other individual mixin/function file
 */
-@import './vendor/notyf/build/notyf.min.css';
+@-webkit-keyframes fadeinright{0%{-webkit-transform:translateX(calc(100% + 30px));transform:translateX(calc(100% + 30px))}to{-webkit-transform:translateX(0);transform:translateX(0)}}@keyframes fadeinright{0%{-webkit-transform:translateX(calc(100% + 30px));transform:translateX(calc(100% + 30px))}to{-webkit-transform:translateX(0);transform:translateX(0)}}@-webkit-keyframes fadeoutright{0%{-webkit-transform:translateX(0);transform:translateX(0)}to{-webkit-transform:translateX(calc(100% + 30px));transform:translateX(calc(100% + 30px))}}@keyframes fadeoutright{0%{-webkit-transform:translateX(0);transform:translateX(0)}to{-webkit-transform:translateX(calc(100% + 30px));transform:translateX(calc(100% + 30px))}}@-webkit-keyframes opacityout{0%{opacity:1}to{opacity:0}}@keyframes opacityout{0%{opacity:1}to{opacity:0}}@-webkit-keyframes ripple{0%{-webkit-transform:scale(0) translateY(-45%) translateX(13%);transform:scale(0) translateY(-45%) translateX(13%)}to{-webkit-transform:scale(1) translateY(-45%) translateX(13%);transform:scale(1) translateY(-45%) translateX(13%)}}@keyframes ripple{0%{-webkit-transform:scale(0) translateY(-45%) translateX(13%);transform:scale(0) translateY(-45%) translateX(13%)}to{-webkit-transform:scale(1) translateY(-45%) translateX(13%);transform:scale(1) translateY(-45%) translateX(13%)}}.notyf__icon--error,.notyf__icon--success{height:21px;width:21px;background:#fff;border-radius:50%;display:block;margin:0 auto;position:relative}.notyf__icon--error:after,.notyf__icon--error:before{content:"";background:currentColor;display:block;position:absolute;width:3px;border-radius:3px;left:9px;height:12px;top:5px}.notyf__icon--error:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.notyf__icon--error:before{-webkit-transform:rotate(45deg);transform:rotate(45deg)}.notyf__icon--success:after,.notyf__icon--success:before{content:"";background:currentColor;display:block;position:absolute;width:3px;border-radius:3px}.notyf__icon--success:after{height:6px;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);top:9px;left:6px}.notyf__icon--success:before{height:11px;-webkit-transform:rotate(45deg);transform:rotate(45deg);top:5px;left:10px}.notyf__toast{display:block;overflow:hidden;top:-100%;-webkit-animation:fadeinright .35s cubic-bezier(0,0,.3,1) forwards;animation:fadeinright .35s cubic-bezier(0,0,.3,1) forwards;box-shadow:0 4px 8px 0 rgba(45,47,58,.2),0 4px 8px 0 rgba(45,47,58,.2);position:relative;border-radius:4px;margin-top:12px;max-width:300px;-webkit-transform:translateX(50%);transform:translateX(50%)}.notyf__toast--disappear{-webkit-transform:translateX(0);transform:translateX(0);-webkit-animation:fadeoutright .25s cubic-bezier(.8,0,1,1) forwards,opacityout .25s cubic-bezier(.8,0,1,1) .01s;animation:fadeoutright .25s cubic-bezier(.8,0,1,1) forwards,opacityout .25s cubic-bezier(.8,0,1,1) .01s}.notyf__toast--disappear .notyf__icon,.notyf__toast--disappear .notyf__message{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}.notyf__toast--disappear .notyf__message{-webkit-animation-delay:.05s;animation-delay:.05s}.notyf__ripple{height:400px;width:400px;position:absolute;-webkit-transform-origin:bottom right;transform-origin:bottom right;right:0;top:0;border-radius:50%;-webkit-transform:scale(0) translateY(-51%) translateX(13%);transform:scale(0) translateY(-51%) translateX(13%);z-index:5;-webkit-animation:ripple .4s ease-out forwards;animation:ripple .4s ease-out forwards}.notyf__wrapper{display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;padding:24px;border-radius:3px;position:relative;z-index:10}.notyf__icon{width:22px;text-align:center;font-size:1.3em;-webkit-animation-delay:.3s;animation-delay:.3s;margin-right:8px}.notyf__message{vertical-align:middle;position:relative;-webkit-animation-delay:.25s;animation-delay:.25s}.notyf__header{font-weight:700;margin-bottom:8px}.notyf{position:fixed;top:20px;right:30px;color:#fff;z-index:9999;display:-webkit-box;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;flex-direction:column;-webkit-box-align:end;align-items:flex-end}@media only screen and (max-width:480px){.notyf{bottom:0;left:0;right:0;-webkit-box-align:initial;align-items:normal}.notyf__ripple{height:600px;width:600px;-webkit-animation-duration:.5s;animation-duration:.5s}.notyf__toast{max-width:none;border-radius:0;box-shadow:0 -2px 7px 0 rgba(0,0,0,.13)}}
 .align-baseline {
   vertical-align: baseline !important;
 }
@@ -1314,26 +1314,6 @@
   white-space: normal;
 }
 
-.w-25 {
-  width: 25% !important;
-}
-
-.w-50 {
-  width: 50% !important;
-}
-
-.w-75 {
-  width: 75% !important;
-}
-
-.w-100 {
-  width: 100% !important;
-}
-
-.w-auto {
-  width: auto !important;
-}
-
 .w-xs {
   width: 16px !important;
 }
@@ -1352,26 +1332,6 @@
 
 .w-xl {
   width: 64px !important;
-}
-
-.h-25 {
-  height: 25% !important;
-}
-
-.h-50 {
-  height: 50% !important;
-}
-
-.h-75 {
-  height: 75% !important;
-}
-
-.h-100 {
-  height: 100% !important;
-}
-
-.h-auto {
-  height: auto !important;
 }
 
 .h-xs {
@@ -7235,45 +7195,6 @@
   color: inherit !important;
 }
 
-.text-blue {
-  color: #007bff;
-}
-.text-indigo {
-  color: #6610f2;
-}
-.text-purple {
-  color: #6f42c1;
-}
-.text-pink {
-  color: #e83e8c;
-}
-.text-red {
-  color: #dc3545;
-}
-.text-orange {
-  color: #fd7e14;
-}
-.text-yellow {
-  color: #ffc107;
-}
-.text-green {
-  color: #28a745;
-}
-.text-teal {
-  color: #20c997;
-}
-.text-cyan {
-  color: #17a2b8;
-}
-.text-white {
-  color: #fafafa;
-}
-.text-gray {
-  color: #6c757d;
-}
-.text-gray-dark {
-  color: #343a40;
-}
 .text-primary-50 {
   color: #cceff7;
 }
@@ -7665,7 +7586,7 @@
 }
 
 .border-primary {
-  border-color: #265966 !important;
+  border-color: #007bff !important;
 }
 
 .border-secondary {
@@ -7693,7 +7614,7 @@
 }
 
 .border-dark {
-  border-color: #21232b !important;
+  border-color: #343a40 !important;
 }
 
 .border-white {
@@ -7824,45 +7745,6 @@
   background-color: transparent !important;
 }
 
-.bg-blue {
-  background-color: #007bff;
-}
-.bg-indigo {
-  background-color: #6610f2;
-}
-.bg-purple {
-  background-color: #6f42c1;
-}
-.bg-pink {
-  background-color: #e83e8c;
-}
-.bg-red {
-  background-color: #dc3545;
-}
-.bg-orange {
-  background-color: #fd7e14;
-}
-.bg-yellow {
-  background-color: #ffc107;
-}
-.bg-green {
-  background-color: #28a745;
-}
-.bg-teal {
-  background-color: #20c997;
-}
-.bg-cyan {
-  background-color: #17a2b8;
-}
-.bg-white {
-  background-color: #fafafa;
-}
-.bg-gray {
-  background-color: #6c757d;
-}
-.bg-gray-dark {
-  background-color: #343a40;
-}
 .bg-primary-50 {
   background-color: #cceff7;
 }
@@ -8463,16 +8345,12 @@ mark,
 }
 
 .caption-2 {
-  text-transform: uppercase;
-  font-weight: 500;
   line-height: 1rem;
-  letter-spacing: -0.5px;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  line-height: 1.5rem;
   font-size: 0.875rem;
-}
-@media (max-width: 1919.98px) {
-  .caption-2 {
-    font-size: 0.75rem;
-  }
 }
 
 .code-1 {

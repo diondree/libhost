@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element } from '@stencil/core';
+import { Host, h } from "@stencil/core";
 import tippy from 'tippy.js';
 export class Tooltip {
     componentDidLoad() {

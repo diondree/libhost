@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Event } from '@stencil/core';
+import { h } from "@stencil/core";
 // import {
 //   Grid,
 //   AllCommunityModules,

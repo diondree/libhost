@@ -1,10 +1,11 @@
 export function applyPolyfills() {
-  var promises = [];
   if (typeof window !== 'undefined') {
     var win = window;
 
+    var promises = [];
+
     if (!win.customElements || (win.Element && (!win.Element.prototype.closest || !win.Element.prototype.matches || !win.Element.prototype.remove))) {
-      promises.push(import(/* webpackChunkName: "stencil-polyfills-dom" */ './dom.js'));
+      promises.push(import('./dom.js'));
     }
 
     function checkIfURLIsSupported() {
@@ -26,8 +27,9 @@ export function applyPolyfills() {
       !checkIfURLIsSupported() ||
       typeof WeakMap == 'undefined'
     ) {
-      promises.push(import(/* webpackChunkName: "stencil-polyfills-core-js" */ './core-js.js'));
+      promises.push(import('./core-js.js'));
     }
+    return Promise.all(promises);
   }
-  return Promise.all(promises);
+  return Promise.resolve();
 }
