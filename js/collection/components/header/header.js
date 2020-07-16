@@ -9,6 +9,15 @@ export class Header {
          * The title of the user dropdown
          */
         this.userMenuTitle = 'Username';
+        this.onBellClick = () => {
+            this.bellClick.emit();
+        };
+        this.onHelpClick = () => {
+            this.helpClick.emit();
+        };
+        this.onCogClick = () => {
+            this.cogClick.emit();
+        };
     }
     renderFallbackLogo() {
         return (h("svg", { width: "218px", height: "24px", viewBox: "0 0 218 24", version: "1.1" },
@@ -38,15 +47,15 @@ export class Header {
         return (h(Host, null,
             h("div", { class: "header mx-auto" },
                 h("div", { class: "col--md--12 px-0" },
-                    h("nav", { class: "navbar fixed-top navbar-default navbar-expand--md" },
-                        h("a", { href: "#", class: "navbar-brand px-6 h-100 d-flex align-items-center mr-0" }, this.renderLogo()),
-                        h("div", { class: "collapse navbar-collapse h-100 text-sm" },
-                            h("smtt-dropdown", { class: "h-100 page-dropdown", name: this.leftMenuTitle, "full-width": true, size: 300 },
+                    h("nav", { class: "navbar fixed-top navbar-default align-items-stretch navbar-expand--md" },
+                        h("a", { href: "#", class: "navbar-brand px-6 d-flex align-items-center mr-0" }, this.renderLogo()),
+                        h("div", { class: "align-items-stretch collapse navbar-collapse text-sm" },
+                            h("smtt-dropdown", { class: " page-dropdown", name: this.leftMenuTitle, "full-width": true, size: 300 },
                                 h("slot", { name: "left-menu-items" })),
-                            h("div", { class: "d-flex ml-auto h-100" },
-                                h("smtt-button", { variation: "icon", theme: "tertiary", icon: "bell", "full-height": true, size: "sm" }),
-                                h("smtt-button", { variation: "icon", theme: "tertiary", icon: "question-circle", "full-height": true, size: "sm" }),
-                                h("smtt-button", { variation: "icon", theme: "tertiary", icon: "cog", "full-height": true, size: "sm" }),
+                            h("div", { class: "d-flex ml-auto " },
+                                h("smtt-button", { layout: "icon", "btn-type": "ghost", variation: "default", "no-border-radius": true, icon: "bell", "full-height": true, size: "sm", onClick: this.onBellClick }),
+                                h("smtt-button", { layout: "icon", "btn-type": "ghost", variation: "default", "no-border-radius": true, icon: "question-circle", "full-height": true, size: "sm", onClick: this.onHelpClick }),
+                                h("smtt-button", { layout: "icon", "btn-type": "ghost", variation: "default", "no-border-radius": true, icon: "cog", "full-height": true, size: "sm", onClick: this.onCogClick }),
                                 h("smtt-dropdown", { class: "user-dropdown", name: this.userMenuTitle, "menu-position": "left", "sub-heading": "Role", "full-width": true, "align-right": true },
                                     h("slot", { name: "user-menu-items" })))))),
                 this.breadcrumb && (h("div", { class: "col--md--12 p-0" },
@@ -157,4 +166,50 @@ export class Header {
             "reflect": false
         }
     }; }
+    static get events() { return [{
+            "method": "bellClick",
+            "name": "bellClick",
+            "bubbles": true,
+            "cancelable": true,
+            "composed": true,
+            "docs": {
+                "tags": [],
+                "text": "Event to be triggered when the bell icon is clicked"
+            },
+            "complexType": {
+                "original": "void",
+                "resolved": "void",
+                "references": {}
+            }
+        }, {
+            "method": "helpClick",
+            "name": "helpClick",
+            "bubbles": true,
+            "cancelable": true,
+            "composed": true,
+            "docs": {
+                "tags": [],
+                "text": "Event to be triggered when the help icon is clicked"
+            },
+            "complexType": {
+                "original": "void",
+                "resolved": "void",
+                "references": {}
+            }
+        }, {
+            "method": "cogClick",
+            "name": "cogClick",
+            "bubbles": true,
+            "cancelable": true,
+            "composed": true,
+            "docs": {
+                "tags": [],
+                "text": "Event to be triggered when the cog icon is clicked"
+            },
+            "complexType": {
+                "original": "void",
+                "resolved": "void",
+                "references": {}
+            }
+        }]; }
 }

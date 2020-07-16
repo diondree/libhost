@@ -45,43 +45,43 @@ export const Default = () => {
           ></style>
           <div class="tooltips__row-1">
         <smtt-tooltip text="top" position="top">
-          <smtt-button variation="icon" icon="arrow-up" theme="default">
+          <smtt-button layout="icon" icon="arrow-up">
           </smtt-button>
         </smtt-tooltip>
       </div>
       <div class="tooltips__row-2">
         <smtt-tooltip text="top left tooltip" position="top-left">
-          <smtt-button variation="icon" icon="arrow-left" theme="default">
+          <smtt-button layout="icon" icon="arrow-left">
           </smtt-button>
         </smtt-tooltip>
         <smtt-tooltip text="top right tooltip" position="top-right">
-          <smtt-button variation="icon" icon="arrow-right" theme="default">
+          <smtt-button layout="icon" icon="arrow-right">
           </smtt-button>
         </smtt-tooltip>
       </div>
       <div class="tooltips__row-3">
         <smtt-tooltip text="left" position="left">
-          <smtt-button variation="icon" icon="arrow-left" theme="default">
+          <smtt-button layout="icon" icon="arrow-left">
           </smtt-button>
         </smtt-tooltip>
         <smtt-tooltip text="right" position="right">
-          <smtt-button variation="icon" icon="arrow-right" theme="default">
+          <smtt-button layout="icon" icon="arrow-right">
           </smtt-button>
         </smtt-tooltip>
       </div>
       <div class="tooltips__row-4">
         <smtt-tooltip text="bottom left tooltip" position="bottom-left">
-          <smtt-button variation="icon" icon="arrow-left" theme="default">
+          <smtt-button layout="icon" icon="arrow-left">
           </smtt-button>
         </smtt-tooltip>
         <smtt-tooltip text="bottom right tooltip" position="bottom-right">
-          <smtt-button variation="icon" icon="arrow-right" theme="default">
+          <smtt-button layout="icon" icon="arrow-right">
           </smtt-button>
         </smtt-tooltip>
       </div>
       <div class="tooltips__row-1">
         <smtt-tooltip text="bottom" position="bottom">
-          <smtt-button variation="icon" icon="arrow-down" theme="default">
+          <smtt-button layout="icon" icon="arrow-down">
           </smtt-button>
         </smtt-tooltip>
       </div>

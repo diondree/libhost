@@ -12,7 +12,13 @@ export const Default = () => {
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, molestias!'
   );
   const type = select('Type', ['warning', 'info', 'success'], 'warning');
-  const header = text('HeaderText', 'Heading');
+  const header = text('Header Text', 'Heading');
+  const buttonOneText = text('Button 1 Text', 'test');
+  const buttonTwoText = text('Button 2 Text', 'test');
+  const buttonOneType = select('Button 1 Type', ['ghost', 'outline', 'solid'], 'ghost');
+  const buttonTwoType = select('Button 2 Type', ['ghost', 'outline', 'solid'], 'ghost');
+  const buttonOneVariation = select('Button 1 Variation', ['primary', 'destructive', 'warning'], 'primary');
+  const buttonTwoVariation = select('Button 2 Variation', ['primary', 'destructive', 'warning'], 'primary');
   const justify = select(
     'trigger horizontal alignment',
     ['start', 'center', 'end'],
@@ -20,8 +26,23 @@ export const Default = () => {
   );
 
   return (
-    <div style={{ display: 'flex', justifyContent: (justify === 'center' ? justify : `flex-${justify}`) }}>
-      <smtt-confirm-dialog type={type} text={bodyText} header={header}>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: justify === 'center' ? justify : `flex-${justify}`
+      }}
+    >
+      <smtt-confirm-dialog
+        button-two-text={buttonTwoText}
+        button-one-text={buttonOneText}
+        button-two-type={buttonTwoType}
+        button-one-type={buttonOneType}
+        button-two-variation={buttonTwoVariation}
+        button-one-variation={buttonOneVariation}
+        type={type}
+        text={bodyText}
+        header={header}
+      >
         <smtt-button>click</smtt-button>
       </smtt-confirm-dialog>
     </div>

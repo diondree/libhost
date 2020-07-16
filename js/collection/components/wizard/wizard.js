@@ -17,6 +17,8 @@ export class Wizard {
          * The title of wizard
          */
         this.name = 'Welcome';
+        /** skip over the initial page with "start process" button */
+        this.skipIntro = false;
         this.getStepNodes = () => {
             return Array.from(this.wizard.children);
         };
@@ -43,6 +45,9 @@ export class Wizard {
         stepNodes[0].active = true;
         const steps = stepNodes.map(step => step.name);
         this.steps = steps;
+        if (this.skipIntro) {
+            this.inProgress = true;
+        }
     }
     changeStep(newStep, oldStep) {
         const steps = this.getStepNodes();
@@ -77,7 +82,7 @@ export class Wizard {
                             h("div", { class: "d-flex align-items-center" },
                                 h("div", { class: `step__number step__number--column ${this
                                         .step === index && 'step__number--active'} ${this
-                                        .step > index && 'step__number--checked'}` }, this.step > index ? (h("smtt-icon", { icon: "check", color: "var(--turquoise-deep-base)" })) : (h("span", null, index + 1))),
+                                        .step > index && 'step__number--checked'}` }, this.step > index ? (h("smtt-icon", { icon: "check", color: "currentColor" })) : (h("span", null, index + 1))),
                                 h("span", { class: `step__label h6 ml-3 step__label--column ${this
                                         .step === index && 'step__label--active'}` }, step)),
                             this.steps.length !== index + 1 && (h("span", { class: `step__divider--column  ${this.step > index &&
@@ -86,9 +91,9 @@ export class Wizard {
                         h("div", { class: "d-flex step-content" },
                             h("slot", null)),
                         h("div", { class: "wizard-nav" },
-                            h("smtt-button", { size: "lg", onClick: () => this.cancelWizard(), theme: "secondary" }, "Cancel"),
+                            h("smtt-button", { size: "lg", onClick: () => this.cancelWizard(), btnType: "outline" }, "Cancel"),
                             h("div", null,
-                                h("smtt-button", { size: "lg", class: "mr-4", disabled: this.step === 0, onClick: () => this.decrementStep(), theme: "secondary" }, "Previous"),
+                                h("smtt-button", { size: "lg", class: "mr-4", disabled: this.step === 0, onClick: () => this.decrementStep(), btnType: "outline" }, "Previous"),
                                 h("smtt-button", { size: "lg", onClick: () => this.incrementStep() }, ((_a = this.steps) === null || _a === void 0 ? void 0 : _a.length) === this.step + 1 ? 'Finish' : 'Next'))))))));
     }
     static get is() { return "smtt-wizard"; }
@@ -134,6 +139,24 @@ export class Wizard {
             },
             "attribute": "sub-heading",
             "reflect": false
+        },
+        "skipIntro": {
+            "type": "boolean",
+            "mutable": false,
+            "complexType": {
+                "original": "boolean",
+                "resolved": "boolean",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "skip over the initial page with \"start process\" button"
+            },
+            "attribute": "skip-intro",
+            "reflect": false,
+            "defaultValue": "false"
         }
     }; }
     static get states() { return {

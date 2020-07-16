@@ -23,6 +23,8 @@ export declare class Wizard {
      * The subHeading of wizard
      */
     subHeading: string;
+    /** skip over the initial page with "start process" button */
+    skipIntro: boolean;
     componentWillLoad(): void;
     initSteps(): void;
     changeStep(newStep: number, oldStep: number): void;

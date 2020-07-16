@@ -18,84 +18,6 @@ import {
 } from './components/tree/tree';
 
 export namespace Components {
-  interface CheckBox {
-    /**
-    * the state of the checkbox 'true' 'false' or 'indeterminate'
-    */
-    'checked': string;
-    /**
-    * function to run when clicked
-    */
-    'clickAction': (ev: MouseEvent) => void;
-    /**
-    * wether or not the checkbox is disabled
-    */
-    'disableCheckbox': boolean;
-    /**
-    * text label for our checkbox
-    */
-    'label': string;
-    /**
-    * the positioning for the label 'top', 'right', 'left', or 'bottom'
-    */
-    'labelPosition': string;
-  }
-  interface SmtMainButton {
-    /**
-    * Alignment of button content
-    */
-    'alignment': 'left' | 'right' | 'center';
-    /**
-    * reference to the button element
-    */
-    'button': HTMLElement;
-    /**
-    * Wether the button is disabled or not
-    */
-    'disabled': boolean;
-    'focus': (options?: FocusOptions) => void;
-    /**
-    * Whether or not the button should fill the height of its parent
-    */
-    'fullHeight': boolean;
-    /**
-    * Whether or not the button should fill the width of its parent
-    */
-    'fullWidth': boolean;
-    /**
-    * icon to be used in button (if variation necessitates)
-    */
-    'icon': string;
-    /**
-    * Whether icon should be displayed to the left or the right
-    */
-    'iconRight': boolean;
-    /**
-    * Styles to be applied to icon
-    */
-    'iconStyle': object;
-    /**
-    * The size of the button
-    */
-    'size': 'sm' | 'md' | 'lg';
-    /**
-    * color theme to be applied to the button e.g primary
-    */
-    'theme': | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'destructive'
-    | 'warning'
-    | 'text-links';
-    /**
-    * The type of button (corresponds to type property of native html button)
-    */
-    'type': 'confirm' | 'submit' | 'button';
-    /**
-    * button variation: icon only button, icon with label or label only
-    */
-    'variation': 'icon' | 'icon-label' | 'label';
-  }
   interface SmttAccordion {}
   interface SmttAccordionItem {
     /**
@@ -119,7 +41,8 @@ export namespace Components {
     /**
     * Alignment of button content
     */
-    'alignment': 'left' | 'right' | 'center';
+    'alignment': "left" | "right" | "center";
+    'btnType': "solid" | "outline" | "ghost";
     /**
     * reference to the button element
     */
@@ -128,6 +51,9 @@ export namespace Components {
     * Wether the button is disabled or not
     */
     'disabled': boolean;
+    /**
+    * delegates focus to the inner native button
+    */
     'focus': (options?: FocusOptions) => void;
     /**
     * Whether or not the button should fill the height of its parent
@@ -138,44 +64,97 @@ export namespace Components {
     */
     'fullWidth': boolean;
     /**
-    * icon to be used in button (if variation necessitates)
+    * icon to be used in button (if layout necessitates)
     */
     'icon': string;
     /**
-    * Whether icon should be displayed to the left or the right
+    * position of the icon relative to the text
     */
-    'iconRight': boolean;
+    'iconPosition': "right" | "top" | "left";
     /**
     * Styles to be applied to icon
     */
     'iconStyle': object;
     /**
+    * button layout: icon only button, icon with label or label only
+    */
+    'layout': "icon" | "icon-label" | "label";
+    /**
+    * give the button square borders
+    */
+    'noBorderRadius': boolean;
+    /**
     * The size of the button
     */
-    'size': 'sm' | 'md' | 'lg';
-    /**
-    * color theme to be applied to the button e.g primary
-    */
-    'theme': | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'destructive'
-    | 'warning'
-    | 'text-links';
+    'size': "sm" | "md" | "lg";
     /**
     * The type of button (corresponds to type property of native html button)
     */
-    'type': 'confirm' | 'submit' | 'button';
+    'type': "confirm" | "submit" | "button";
     /**
-    * button variation: icon only button, icon with label or label only
+    * color theme to be applied to the button e.g primary
     */
-    'variation': 'icon' | 'icon-label' | 'label';
+    'variation': "default" | "primary" | "destructive" | "warning";
+  }
+  interface SmttCheckbox {
+    /**
+    * the state of the checkbox 'true' 'false' or 'indeterminate'
+    */
+    'checked': string;
+    /**
+    * wether or not the checkbox is disabled
+    */
+    'disableCheckbox': boolean;
+    /**
+    * text label for our checkbox
+    */
+    'label': string;
+    /**
+    * the positioning for the label 'top', 'right', 'left', or 'bottom'
+    */
+    'labelPosition': string;
   }
   interface SmttConfirmDialog {
     /**
-    * the button element
+    * the first button element (far right)
     */
-    'buttonElement': HTMLSmttButtonElement;
+    'buttonOneElement': HTMLSmttButtonElement;
+    /**
+    * click event handler for button one
+    */
+    'buttonOneEvent': (Event) => void;
+    /**
+    * text to show in the dialog button
+    */
+    'buttonOneText': string;
+    /**
+    * the btn-type property for button one
+    */
+    'buttonOneType': "ghost" | "solid" | "outline";
+    /**
+    * the variation property for button one
+    */
+    'buttonOneVariation': "primary" | "destructive" | "warning";
+    /**
+    * the second button element (left)
+    */
+    'buttonTwoElement': HTMLSmttButtonElement;
+    /**
+    * click event handler for button two
+    */
+    'buttonTwoEvent': (Event) => void;
+    /**
+    * text to show in the dialog button
+    */
+    'buttonTwoText': string;
+    /**
+    * the btn-type property for button Two
+    */
+    'buttonTwoType': "ghost" | "solid" | "outline";
+    /**
+    * the variation property for button Two
+    */
+    'buttonTwoVariation': "primary" | "destructive" | "warning";
     /**
     * the element that our dialog will be appended to
     */
@@ -192,6 +171,10 @@ export namespace Components {
     * hide the dialog box
     */
     'hide': () => Promise<void>;
+    /**
+    * show the dialog box
+    */
+    'show': () => Promise<void>;
     /**
     * the slot element which contains slotted content
     */
@@ -387,6 +370,10 @@ export namespace Components {
     * this sets the default error message when the invalid reason is not known or accounted for
     */
     'errorMsg': string;
+    /**
+    * maximum length of the input field
+    */
+    'feedbackID': string;
     'focus': (options?: FocusOptions) => void;
     /**
     * the form to attach this input to
@@ -405,9 +392,17 @@ export namespace Components {
     */
     'helpText': string;
     /**
-    * If the input field should
+    * maximum length of the input field
+    */
+    'helpTextID': string;
+    /**
+    * Icon to be displayed inside the input field
     */
     'icon': string;
+    /**
+    * icon placement
+    */
+    'iconPlacement': 'icon-right' | 'icon-left';
     /**
     * Attribute to trigger active style on input
     */
@@ -421,9 +416,17 @@ export namespace Components {
     */
     'label': string;
     /**
+    * maximum length of the input field
+    */
+    'labelID': string;
+    /**
     * Properties/attributes to pass to label
     */
     'labelProps': any;
+    /**
+    * maximum length of the input field
+    */
+    'maxlength': string;
     /**
     * id to be given to input element
     */
@@ -440,6 +443,7 @@ export namespace Components {
     * wether input is required
     */
     'readonly': boolean;
+    'reportValidity': () => Promise<void>;
     /**
     * wether input is required
     */
@@ -468,16 +472,15 @@ export namespace Components {
     */
     'value'?: string | number | null;
   }
-  interface SmttRolloverMenu {
-    'closeAllOtherMenus': () => Promise<void>;
-    'disabled': boolean;
-    'isExpanded': string;
-    'toggleExpansion': () => Promise<string>;
-  }
   interface SmttSeparator {}
   interface SmttStatusLabel {
     'subtle': boolean;
-    'variation': 'completed' | 'cancelled' | 'pending';
+    'variation': | "success"
+    | "alert"
+    | "warning"
+    | "neutral"
+    | "default"
+    | "primary";
   }
   interface SmttToast {
     'error': (data: any) => Promise<void>;
@@ -548,6 +551,10 @@ export namespace Components {
     */
     'name': string;
     /**
+    * skip over the initial page with "start process" button
+    */
+    'skipIntro': boolean;
+    /**
     * The subHeading of wizard
     */
     'subHeading': string;
@@ -571,18 +578,6 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLCheckBoxElement extends Components.CheckBox, HTMLStencilElement {}
-  var HTMLCheckBoxElement: {
-    prototype: HTMLCheckBoxElement;
-    new (): HTMLCheckBoxElement;
-  };
-
-  interface HTMLSmtMainButtonElement extends Components.SmtMainButton, HTMLStencilElement {}
-  var HTMLSmtMainButtonElement: {
-    prototype: HTMLSmtMainButtonElement;
-    new (): HTMLSmtMainButtonElement;
-  };
-
   interface HTMLSmttAccordionElement extends Components.SmttAccordion, HTMLStencilElement {}
   var HTMLSmttAccordionElement: {
     prototype: HTMLSmttAccordionElement;
@@ -599,6 +594,12 @@ declare global {
   var HTMLSmttButtonElement: {
     prototype: HTMLSmttButtonElement;
     new (): HTMLSmttButtonElement;
+  };
+
+  interface HTMLSmttCheckboxElement extends Components.SmttCheckbox, HTMLStencilElement {}
+  var HTMLSmttCheckboxElement: {
+    prototype: HTMLSmttCheckboxElement;
+    new (): HTMLSmttCheckboxElement;
   };
 
   interface HTMLSmttConfirmDialogElement extends Components.SmttConfirmDialog, HTMLStencilElement {}
@@ -655,12 +656,6 @@ declare global {
     new (): HTMLSmttInputElement;
   };
 
-  interface HTMLSmttRolloverMenuElement extends Components.SmttRolloverMenu, HTMLStencilElement {}
-  var HTMLSmttRolloverMenuElement: {
-    prototype: HTMLSmttRolloverMenuElement;
-    new (): HTMLSmttRolloverMenuElement;
-  };
-
   interface HTMLSmttSeparatorElement extends Components.SmttSeparator, HTMLStencilElement {}
   var HTMLSmttSeparatorElement: {
     prototype: HTMLSmttSeparatorElement;
@@ -703,11 +698,10 @@ declare global {
     new (): HTMLSmttWizardStepElement;
   };
   interface HTMLElementTagNameMap {
-    'check-box': HTMLCheckBoxElement;
-    'smt-main-button': HTMLSmtMainButtonElement;
     'smtt-accordion': HTMLSmttAccordionElement;
     'smtt-accordion-item': HTMLSmttAccordionItemElement;
     'smtt-button': HTMLSmttButtonElement;
+    'smtt-checkbox': HTMLSmttCheckboxElement;
     'smtt-confirm-dialog': HTMLSmttConfirmDialogElement;
     'smtt-contextual-box': HTMLSmttContextualBoxElement;
     'smtt-dropdown': HTMLSmttDropdownElement;
@@ -717,7 +711,6 @@ declare global {
     'smtt-header': HTMLSmttHeaderElement;
     'smtt-icon': HTMLSmttIconElement;
     'smtt-input': HTMLSmttInputElement;
-    'smtt-rollover-menu': HTMLSmttRolloverMenuElement;
     'smtt-separator': HTMLSmttSeparatorElement;
     'smtt-status-label': HTMLSmttStatusLabelElement;
     'smtt-toast': HTMLSmttToastElement;
@@ -729,84 +722,6 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface CheckBox {
-    /**
-    * the state of the checkbox 'true' 'false' or 'indeterminate'
-    */
-    'checked'?: string;
-    /**
-    * function to run when clicked
-    */
-    'clickAction'?: (ev: MouseEvent) => void;
-    /**
-    * wether or not the checkbox is disabled
-    */
-    'disableCheckbox'?: boolean;
-    /**
-    * text label for our checkbox
-    */
-    'label'?: string;
-    /**
-    * the positioning for the label 'top', 'right', 'left', or 'bottom'
-    */
-    'labelPosition'?: string;
-  }
-  interface SmtMainButton {
-    /**
-    * Alignment of button content
-    */
-    'alignment'?: 'left' | 'right' | 'center';
-    /**
-    * reference to the button element
-    */
-    'button'?: HTMLElement;
-    /**
-    * Wether the button is disabled or not
-    */
-    'disabled'?: boolean;
-    'focus'?: (options?: FocusOptions) => void;
-    /**
-    * Whether or not the button should fill the height of its parent
-    */
-    'fullHeight'?: boolean;
-    /**
-    * Whether or not the button should fill the width of its parent
-    */
-    'fullWidth'?: boolean;
-    /**
-    * icon to be used in button (if variation necessitates)
-    */
-    'icon'?: string;
-    /**
-    * Whether icon should be displayed to the left or the right
-    */
-    'iconRight'?: boolean;
-    /**
-    * Styles to be applied to icon
-    */
-    'iconStyle'?: object;
-    /**
-    * The size of the button
-    */
-    'size'?: 'sm' | 'md' | 'lg';
-    /**
-    * color theme to be applied to the button e.g primary
-    */
-    'theme'?: | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'destructive'
-    | 'warning'
-    | 'text-links';
-    /**
-    * The type of button (corresponds to type property of native html button)
-    */
-    'type'?: 'confirm' | 'submit' | 'button';
-    /**
-    * button variation: icon only button, icon with label or label only
-    */
-    'variation'?: 'icon' | 'icon-label' | 'label';
-  }
   interface SmttAccordion {}
   interface SmttAccordionItem {
     /**
@@ -830,7 +745,8 @@ declare namespace LocalJSX {
     /**
     * Alignment of button content
     */
-    'alignment'?: 'left' | 'right' | 'center';
+    'alignment'?: "left" | "right" | "center";
+    'btnType'?: "solid" | "outline" | "ghost";
     /**
     * reference to the button element
     */
@@ -839,6 +755,9 @@ declare namespace LocalJSX {
     * Wether the button is disabled or not
     */
     'disabled'?: boolean;
+    /**
+    * delegates focus to the inner native button
+    */
     'focus'?: (options?: FocusOptions) => void;
     /**
     * Whether or not the button should fill the height of its parent
@@ -849,44 +768,101 @@ declare namespace LocalJSX {
     */
     'fullWidth'?: boolean;
     /**
-    * icon to be used in button (if variation necessitates)
+    * icon to be used in button (if layout necessitates)
     */
     'icon'?: string;
     /**
-    * Whether icon should be displayed to the left or the right
+    * position of the icon relative to the text
     */
-    'iconRight'?: boolean;
+    'iconPosition'?: "right" | "top" | "left";
     /**
     * Styles to be applied to icon
     */
     'iconStyle'?: object;
     /**
+    * button layout: icon only button, icon with label or label only
+    */
+    'layout'?: "icon" | "icon-label" | "label";
+    /**
+    * give the button square borders
+    */
+    'noBorderRadius'?: boolean;
+    /**
     * The size of the button
     */
-    'size'?: 'sm' | 'md' | 'lg';
-    /**
-    * color theme to be applied to the button e.g primary
-    */
-    'theme'?: | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'destructive'
-    | 'warning'
-    | 'text-links';
+    'size'?: "sm" | "md" | "lg";
     /**
     * The type of button (corresponds to type property of native html button)
     */
-    'type'?: 'confirm' | 'submit' | 'button';
+    'type'?: "confirm" | "submit" | "button";
     /**
-    * button variation: icon only button, icon with label or label only
+    * color theme to be applied to the button e.g primary
     */
-    'variation'?: 'icon' | 'icon-label' | 'label';
+    'variation'?: "default" | "primary" | "destructive" | "warning";
+  }
+  interface SmttCheckbox {
+    /**
+    * the state of the checkbox 'true' 'false' or 'indeterminate'
+    */
+    'checked'?: string;
+    /**
+    * wether or not the checkbox is disabled
+    */
+    'disableCheckbox'?: boolean;
+    /**
+    * text label for our checkbox
+    */
+    'label'?: string;
+    /**
+    * the positioning for the label 'top', 'right', 'left', or 'bottom'
+    */
+    'labelPosition'?: string;
+    /**
+    * Emitted when the value of the checkbox changes
+    */
+    'onChange'?: (event: CustomEvent<String>) => void;
   }
   interface SmttConfirmDialog {
     /**
-    * the button element
+    * the first button element (far right)
     */
-    'buttonElement'?: HTMLSmttButtonElement;
+    'buttonOneElement'?: HTMLSmttButtonElement;
+    /**
+    * click event handler for button one
+    */
+    'buttonOneEvent'?: (Event) => void;
+    /**
+    * text to show in the dialog button
+    */
+    'buttonOneText'?: string;
+    /**
+    * the btn-type property for button one
+    */
+    'buttonOneType'?: "ghost" | "solid" | "outline";
+    /**
+    * the variation property for button one
+    */
+    'buttonOneVariation'?: "primary" | "destructive" | "warning";
+    /**
+    * the second button element (left)
+    */
+    'buttonTwoElement'?: HTMLSmttButtonElement;
+    /**
+    * click event handler for button two
+    */
+    'buttonTwoEvent'?: (Event) => void;
+    /**
+    * text to show in the dialog button
+    */
+    'buttonTwoText'?: string;
+    /**
+    * the btn-type property for button Two
+    */
+    'buttonTwoType'?: "ghost" | "solid" | "outline";
+    /**
+    * the variation property for button Two
+    */
+    'buttonTwoVariation'?: "primary" | "destructive" | "warning";
     /**
     * the element that our dialog will be appended to
     */
@@ -1017,6 +993,18 @@ declare namespace LocalJSX {
     */
     'leftMenuTitle'?: string;
     /**
+    * Event to be triggered when the bell icon is clicked
+    */
+    'onBellClick'?: (event: CustomEvent<void>) => void;
+    /**
+    * Event to be triggered when the cog icon is clicked
+    */
+    'onCogClick'?: (event: CustomEvent<void>) => void;
+    /**
+    * Event to be triggered when the help icon is clicked
+    */
+    'onHelpClick'?: (event: CustomEvent<void>) => void;
+    /**
     * The title of the user dropdown
     */
     'userMenuTitle'?: string;
@@ -1090,6 +1078,10 @@ declare namespace LocalJSX {
     * this sets the default error message when the invalid reason is not known or accounted for
     */
     'errorMsg'?: string;
+    /**
+    * maximum length of the input field
+    */
+    'feedbackID'?: string;
     'focus'?: (options?: FocusOptions) => void;
     /**
     * the form to attach this input to
@@ -1108,9 +1100,17 @@ declare namespace LocalJSX {
     */
     'helpText'?: string;
     /**
-    * If the input field should
+    * maximum length of the input field
+    */
+    'helpTextID'?: string;
+    /**
+    * Icon to be displayed inside the input field
     */
     'icon'?: string;
+    /**
+    * icon placement
+    */
+    'iconPlacement'?: 'icon-right' | 'icon-left';
     /**
     * Attribute to trigger active style on input
     */
@@ -1124,9 +1124,17 @@ declare namespace LocalJSX {
     */
     'label'?: string;
     /**
+    * maximum length of the input field
+    */
+    'labelID'?: string;
+    /**
     * Properties/attributes to pass to label
     */
     'labelProps'?: any;
+    /**
+    * maximum length of the input field
+    */
+    'maxlength'?: string;
     /**
     * id to be given to input element
     */
@@ -1183,14 +1191,15 @@ declare namespace LocalJSX {
     */
     'value'?: string | number | null;
   }
-  interface SmttRolloverMenu {
-    'disabled'?: boolean;
-    'isExpanded'?: string;
-  }
   interface SmttSeparator {}
   interface SmttStatusLabel {
     'subtle'?: boolean;
-    'variation'?: 'completed' | 'cancelled' | 'pending';
+    'variation'?: | "success"
+    | "alert"
+    | "warning"
+    | "neutral"
+    | "default"
+    | "primary";
   }
   interface SmttToast {
     'toast'?: any;
@@ -1261,6 +1270,10 @@ declare namespace LocalJSX {
     */
     'name'?: string;
     /**
+    * skip over the initial page with "start process" button
+    */
+    'skipIntro'?: boolean;
+    /**
     * The subHeading of wizard
     */
     'subHeading'?: string;
@@ -1281,11 +1294,10 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
-    'check-box': CheckBox;
-    'smt-main-button': SmtMainButton;
     'smtt-accordion': SmttAccordion;
     'smtt-accordion-item': SmttAccordionItem;
     'smtt-button': SmttButton;
+    'smtt-checkbox': SmttCheckbox;
     'smtt-confirm-dialog': SmttConfirmDialog;
     'smtt-contextual-box': SmttContextualBox;
     'smtt-dropdown': SmttDropdown;
@@ -1295,7 +1307,6 @@ declare namespace LocalJSX {
     'smtt-header': SmttHeader;
     'smtt-icon': SmttIcon;
     'smtt-input': SmttInput;
-    'smtt-rollover-menu': SmttRolloverMenu;
     'smtt-separator': SmttSeparator;
     'smtt-status-label': SmttStatusLabel;
     'smtt-toast': SmttToast;
@@ -1312,11 +1323,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'check-box': LocalJSX.CheckBox & JSXBase.HTMLAttributes<HTMLCheckBoxElement>;
-      'smt-main-button': LocalJSX.SmtMainButton & JSXBase.HTMLAttributes<HTMLSmtMainButtonElement>;
       'smtt-accordion': LocalJSX.SmttAccordion & JSXBase.HTMLAttributes<HTMLSmttAccordionElement>;
       'smtt-accordion-item': LocalJSX.SmttAccordionItem & JSXBase.HTMLAttributes<HTMLSmttAccordionItemElement>;
       'smtt-button': LocalJSX.SmttButton & JSXBase.HTMLAttributes<HTMLSmttButtonElement>;
+      'smtt-checkbox': LocalJSX.SmttCheckbox & JSXBase.HTMLAttributes<HTMLSmttCheckboxElement>;
       'smtt-confirm-dialog': LocalJSX.SmttConfirmDialog & JSXBase.HTMLAttributes<HTMLSmttConfirmDialogElement>;
       'smtt-contextual-box': LocalJSX.SmttContextualBox & JSXBase.HTMLAttributes<HTMLSmttContextualBoxElement>;
       'smtt-dropdown': LocalJSX.SmttDropdown & JSXBase.HTMLAttributes<HTMLSmttDropdownElement>;
@@ -1326,7 +1336,6 @@ declare module "@stencil/core" {
       'smtt-header': LocalJSX.SmttHeader & JSXBase.HTMLAttributes<HTMLSmttHeaderElement>;
       'smtt-icon': LocalJSX.SmttIcon & JSXBase.HTMLAttributes<HTMLSmttIconElement>;
       'smtt-input': LocalJSX.SmttInput & JSXBase.HTMLAttributes<HTMLSmttInputElement>;
-      'smtt-rollover-menu': LocalJSX.SmttRolloverMenu & JSXBase.HTMLAttributes<HTMLSmttRolloverMenuElement>;
       'smtt-separator': LocalJSX.SmttSeparator & JSXBase.HTMLAttributes<HTMLSmttSeparatorElement>;
       'smtt-status-label': LocalJSX.SmttStatusLabel & JSXBase.HTMLAttributes<HTMLSmttStatusLabelElement>;
       'smtt-toast': LocalJSX.SmttToast & JSXBase.HTMLAttributes<HTMLSmttToastElement>;

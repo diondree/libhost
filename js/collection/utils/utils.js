@@ -43,7 +43,13 @@ export function colorSVGNodes(children, color) {
                 'tspan'
             ];
             if (graphicsElements.includes(child.nodeName)) {
-                child.style.fill = color;
+                if (color) {
+                    child.setAttribute("fill", color);
+                    console.log("fill", color);
+                }
+                else {
+                    child.style.fill = "currentColor";
+                }
             }
             else if (structuralElements.includes(child.nodeName)) {
                 colorSVGNodes(child.childNodes, color);
@@ -51,3 +57,17 @@ export function colorSVGNodes(children, color) {
         }
     }
 }
+/** always use a globally unique ID wrt the page for the label
+ * expecially needed on IE where shadow DOM doesnt work
+ */
+export const getUniqueContextId = (contextString) => {
+    let uid = Math.floor(Math.random() * 10000);
+    console.log(`${contextString}-${uid}`);
+    if (document.querySelector(`${contextString}-${uid}`)) {
+        return this.getUniqueContextId();
+    }
+    else {
+        return `${contextString}-${uid}`;
+    }
+    ;
+};

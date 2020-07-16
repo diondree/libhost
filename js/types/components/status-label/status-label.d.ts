@@ -1,5 +1,5 @@
 export declare class Label {
-    variation: 'completed' | 'cancelled' | 'pending';
+    variation: "success" | "alert" | "warning" | "neutral" | "default" | "primary";
     subtle: boolean;
     render(): any;
 }

@@ -122,8 +122,8 @@ export const Page = () => (
           <div class="login-form__controls__label h4">Sign in to continue</div>
           <smtt-input full-width label="Username" autofocus></smtt-input>
           <smtt-input full-width type="password" label="Password"></smtt-input>
-          <smt-main-button class="login-form__login-btn" full-width
-            >Login</smt-main-button
+          <smtt-button class="login-form__login-btn" full-width
+            >Login</smtt-button
           >
           <a class="login-form__forgot-password" href="#">Forgot password?</a>
         </form>

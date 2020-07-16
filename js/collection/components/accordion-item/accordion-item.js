@@ -26,7 +26,7 @@ export class AccordionItem {
         };
         this.renderIcon = () => {
             return (h("div", { class: "d-flex justify-content-center" },
-                h("smtt-button", { class: "align-self-center", size: "sm", variation: "icon", theme: "tertiary", icon: "angle-right", 
+                h("smtt-button", { class: "align-self-center", size: "sm", layout: "icon", btnType: "ghost", icon: "angle-right", 
                     // iconClass={`accordion-icon ${this.open && 'accordion-icon--open'}`}
                     iconStyle: Object.assign({ transition: 'transform 500ms', alignItems: 'center' }, (this.open && { transform: 'rotate(90deg)' })), "on-click": this.handleClick })));
         };

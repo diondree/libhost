@@ -33,8 +33,12 @@ export declare class Input {
     customValidator: Function;
     /** autofocus on element */
     autofocus: boolean;
-    /** If the input field should  */
+    /** maximum length of the input field */
+    maxlength: string;
+    /** Icon to be displayed inside the input field  */
     icon: string;
+    /** icon placement */
+    iconPlacement: 'icon-right' | 'icon-left';
     /** Event emitted when icon is clicked */
     iconClick: EventEmitter<void>;
     /** Whether or not the state of the input should be invalid */
@@ -84,6 +88,12 @@ export declare class Input {
         valueMissing?: true;
     };
     focus: (options?: FocusOptions) => void;
+    /** maximum length of the input field */
+    labelID: string;
+    /** maximum length of the input field */
+    feedbackID: string;
+    /** maximum length of the input field */
+    helpTextID: string;
     inputEl: HTMLInputElement;
     passwordRevealToggle: HTMLSmttIconElement;
     componentDidLoad(): void;
@@ -91,6 +101,7 @@ export declare class Input {
     validity: Function;
     /** wether input is valid or not considering its constraints */
     checkValidity: Function;
+    reportValidity(): Promise<void>;
     /**
      * Emitted when a keyboard input occurred.
      */

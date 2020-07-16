@@ -240,12 +240,12 @@ export const WithTreeContent = () => {
         <div class="action-container">
           <smtt-rollover-menu>
             <div>
-              <smtt-button btn-type="tertiary">
+              <smtt-button btn-type="outline">
                 <smtt-icon icon="eye"></smtt-icon>
               </smtt-button>
             </div>
             <div">
-              <smtt-button btn-type="tertiary">
+              <smtt-button btn-type="outline">
                 <smtt-icon icon="delete"></smtt-icon>
               </smtt-button>
             </div>

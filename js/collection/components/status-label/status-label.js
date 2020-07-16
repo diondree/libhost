@@ -1,14 +1,14 @@
 import { Host, h } from "@stencil/core";
 export class Label {
     constructor() {
-        this.variation = 'completed';
+        this.variation = "success";
         this.subtle = false;
     }
     render() {
         return (h(Host, null,
             h("span", { class: this.subtle
                     ? `badge badge--subtle badge--subtle--${this.variation}`
-                    : `badge badge--pill badge--primary badge--${this.variation}` },
+                    : `badge badge--pill badge--${this.variation}` },
                 h("p", { class: "badge__status-text" },
                     h("slot", null)))));
     }
@@ -25,8 +25,8 @@ export class Label {
             "type": "string",
             "mutable": false,
             "complexType": {
-                "original": "'completed' | 'cancelled' | 'pending'",
-                "resolved": "\"cancelled\" | \"completed\" | \"pending\"",
+                "original": "| \"success\"\n    | \"alert\"\n    | \"warning\"\n    | \"neutral\"\n    | \"default\"\n    | \"primary\"",
+                "resolved": "\"alert\" | \"default\" | \"neutral\" | \"primary\" | \"success\" | \"warning\"",
                 "references": {}
             },
             "required": false,
@@ -37,7 +37,7 @@ export class Label {
             },
             "attribute": "variation",
             "reflect": false,
-            "defaultValue": "'completed'"
+            "defaultValue": "\"success\""
         },
         "subtle": {
             "type": "boolean",

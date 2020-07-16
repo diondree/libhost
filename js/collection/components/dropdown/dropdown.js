@@ -47,10 +47,10 @@ export class Dropdown {
     }
     render() {
         return (h(Host, null,
-            h("div", { class: `h-100 d-flex align-items-center position-relative ${!this
+            h("div", { class: `h-100 d-flex align-items-stretch position-relative ${!this
                     .fullWidth && 'max-w-10'}` },
-                h("smtt-button", { theme: "tertiary", class: `dropdown d-flex align-items-center justify-content-between button__content ${this
-                        .fullWidth && 'w-100'}`, onClick: () => this.toggleDropdown(), "aria-haspopup": "menu", "aria-expanded": `${this.open}`, variation: !this.name ? 'icon' : 'icon-label', icon: this.icon ? this.icon : `angle-down`, "full-height": true, "icon-right": this.name && true, alignment: !this.name ? 'center' : 'left' },
+                h("smtt-button", { btnType: "ghost", variation: "default", class: `dropdown d-flex h-100 justify-content-between button__content ${this
+                        .fullWidth && 'w-100'}`, onClick: () => this.toggleDropdown(), "aria-haspopup": "menu", "aria-expanded": `${this.open}`, "no-border-radius": true, layout: !this.name ? 'icon' : 'icon-label', icon: this.icon ? this.icon : `angle-down`, "full-height": true, "icon-right": this.name && true, alignment: !this.name ? 'center' : 'left' },
                     h("div", { class: "d-flex flex-column justify-content-center" },
                         h("span", { class: "text-sm" }, this.name),
                         h("span", { class: "text-xs text-gray-100 align-self-end" }, this.subHeading))),

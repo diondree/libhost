@@ -2,144 +2,6 @@
   "version": 1.1,
   "tags": [
     {
-      "name": "check-box",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": [
-        {
-          "name": "checked",
-          "description": "the state of the checkbox 'true' 'false' or 'indeterminate'"
-        },
-        {
-          "name": "disable-checkbox",
-          "description": "wether or not the checkbox is disabled"
-        },
-        {
-          "name": "label",
-          "description": "text label for our checkbox"
-        },
-        {
-          "name": "label-position",
-          "description": "the positioning for the label 'top', 'right', 'left', or 'bottom'"
-        }
-      ]
-    },
-    {
-      "name": "smt-main-button",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": [
-        {
-          "name": "alignment",
-          "description": "Alignment of button content",
-          "values": [
-            {
-              "name": "center"
-            },
-            {
-              "name": "left"
-            },
-            {
-              "name": "right"
-            }
-          ]
-        },
-        {
-          "name": "disabled",
-          "description": "Wether the button is disabled or not"
-        },
-        {
-          "name": "full-height",
-          "description": "Whether or not the button should fill the height of its parent"
-        },
-        {
-          "name": "full-width",
-          "description": "Whether or not the button should fill the width of its parent"
-        },
-        {
-          "name": "icon",
-          "description": "icon to be used in button (if variation necessitates)"
-        },
-        {
-          "name": "icon-right",
-          "description": "Whether icon should be displayed to the left or the right"
-        },
-        {
-          "name": "size",
-          "description": "The size of the button",
-          "values": [
-            {
-              "name": "lg"
-            },
-            {
-              "name": "md"
-            },
-            {
-              "name": "sm"
-            }
-          ]
-        },
-        {
-          "name": "theme",
-          "description": "color theme to be applied to the button e.g primary",
-          "values": [
-            {
-              "name": "destructive"
-            },
-            {
-              "name": "primary"
-            },
-            {
-              "name": "secondary"
-            },
-            {
-              "name": "tertiary"
-            },
-            {
-              "name": "text-links"
-            },
-            {
-              "name": "warning"
-            }
-          ]
-        },
-        {
-          "name": "type",
-          "description": "The type of button (corresponds to type property of native html button)",
-          "values": [
-            {
-              "name": "button"
-            },
-            {
-              "name": "confirm"
-            },
-            {
-              "name": "submit"
-            }
-          ]
-        },
-        {
-          "name": "variation",
-          "description": "button variation: icon only button, icon with label or label only",
-          "values": [
-            {
-              "name": "icon"
-            },
-            {
-              "name": "icon-label"
-            },
-            {
-              "name": "label"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "smtt-accordion",
       "description": {
         "kind": "markdown",
@@ -203,6 +65,21 @@
           ]
         },
         {
+          "name": "btn-type",
+          "description": "",
+          "values": [
+            {
+              "name": "ghost"
+            },
+            {
+              "name": "outline"
+            },
+            {
+              "name": "solid"
+            }
+          ]
+        },
+        {
           "name": "disabled",
           "description": "Wether the button is disabled or not"
         },
@@ -216,11 +93,41 @@
         },
         {
           "name": "icon",
-          "description": "icon to be used in button (if variation necessitates)"
+          "description": "icon to be used in button (if layout necessitates)"
         },
         {
-          "name": "icon-right",
-          "description": "Whether icon should be displayed to the left or the right"
+          "name": "icon-position",
+          "description": "position of the icon relative to the text",
+          "values": [
+            {
+              "name": "left"
+            },
+            {
+              "name": "right"
+            },
+            {
+              "name": "top"
+            }
+          ]
+        },
+        {
+          "name": "layout",
+          "description": "button layout: icon only button, icon with label or label only",
+          "values": [
+            {
+              "name": "icon"
+            },
+            {
+              "name": "icon-label"
+            },
+            {
+              "name": "label"
+            }
+          ]
+        },
+        {
+          "name": "no-border-radius",
+          "description": "give the button square borders"
         },
         {
           "name": "size",
@@ -234,30 +141,6 @@
             },
             {
               "name": "sm"
-            }
-          ]
-        },
-        {
-          "name": "theme",
-          "description": "color theme to be applied to the button e.g primary",
-          "values": [
-            {
-              "name": "destructive"
-            },
-            {
-              "name": "primary"
-            },
-            {
-              "name": "secondary"
-            },
-            {
-              "name": "tertiary"
-            },
-            {
-              "name": "text-links"
-            },
-            {
-              "name": "warning"
             }
           ]
         },
@@ -278,18 +161,46 @@
         },
         {
           "name": "variation",
-          "description": "button variation: icon only button, icon with label or label only",
+          "description": "color theme to be applied to the button e.g primary",
           "values": [
             {
-              "name": "icon"
+              "name": "default"
             },
             {
-              "name": "icon-label"
+              "name": "destructive"
             },
             {
-              "name": "label"
+              "name": "primary"
+            },
+            {
+              "name": "warning"
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "smtt-checkbox",
+      "description": {
+        "kind": "markdown",
+        "value": ""
+      },
+      "attributes": [
+        {
+          "name": "checked",
+          "description": "the state of the checkbox 'true' 'false' or 'indeterminate'"
+        },
+        {
+          "name": "disable-checkbox",
+          "description": "wether or not the checkbox is disabled"
+        },
+        {
+          "name": "label",
+          "description": "text label for our checkbox"
+        },
+        {
+          "name": "label-position",
+          "description": "the positioning for the label 'top', 'right', 'left', or 'bottom'"
         }
       ]
     },
@@ -300,6 +211,74 @@
         "value": ""
       },
       "attributes": [
+        {
+          "name": "button-one-text",
+          "description": "text to show in the dialog button"
+        },
+        {
+          "name": "button-one-type",
+          "description": "the btn-type property for button one",
+          "values": [
+            {
+              "name": "ghost"
+            },
+            {
+              "name": "outline"
+            },
+            {
+              "name": "solid"
+            }
+          ]
+        },
+        {
+          "name": "button-one-variation",
+          "description": "the variation property for button one",
+          "values": [
+            {
+              "name": "destructive"
+            },
+            {
+              "name": "primary"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        },
+        {
+          "name": "button-two-text",
+          "description": "text to show in the dialog button"
+        },
+        {
+          "name": "button-two-type",
+          "description": "the btn-type property for button Two",
+          "values": [
+            {
+              "name": "ghost"
+            },
+            {
+              "name": "outline"
+            },
+            {
+              "name": "solid"
+            }
+          ]
+        },
+        {
+          "name": "button-two-variation",
+          "description": "the variation property for button Two",
+          "values": [
+            {
+              "name": "destructive"
+            },
+            {
+              "name": "primary"
+            },
+            {
+              "name": "warning"
+            }
+          ]
+        },
         {
           "name": "header",
           "description": "header of the dialog"
@@ -571,6 +550,10 @@
           "description": "this sets the default error message when the invalid reason is not known or accounted for"
         },
         {
+          "name": "feedback-i-d",
+          "description": "maximum length of the input field"
+        },
+        {
           "name": "form",
           "description": "the form to attach this input to"
         },
@@ -587,8 +570,24 @@
           "description": "small help text to be shown below input field"
         },
         {
+          "name": "help-text-i-d",
+          "description": "maximum length of the input field"
+        },
+        {
           "name": "icon",
-          "description": "If the input field should"
+          "description": "Icon to be displayed inside the input field"
+        },
+        {
+          "name": "icon-placement",
+          "description": "icon placement",
+          "values": [
+            {
+              "name": "icon-left"
+            },
+            {
+              "name": "icon-right"
+            }
+          ]
         },
         {
           "name": "is-active",
@@ -603,8 +602,16 @@
           "description": "label text to be associated with input (both visually and accessibility wise)"
         },
         {
+          "name": "label-i-d",
+          "description": "maximum length of the input field"
+        },
+        {
           "name": "label-props",
           "description": "Properties/attributes to pass to label"
+        },
+        {
+          "name": "maxlength",
+          "description": "maximum length of the input field"
         },
         {
           "name": "name",
@@ -667,23 +674,6 @@
       ]
     },
     {
-      "name": "smtt-rollover-menu",
-      "description": {
-        "kind": "markdown",
-        "value": ""
-      },
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": ""
-        },
-        {
-          "name": "is-expanded",
-          "description": ""
-        }
-      ]
-    },
-    {
       "name": "smtt-separator",
       "description": {
         "kind": "markdown",
@@ -707,13 +697,22 @@
           "description": "",
           "values": [
             {
-              "name": "cancelled"
+              "name": "alert"
             },
             {
-              "name": "completed"
+              "name": "default"
             },
             {
-              "name": "pending"
+              "name": "neutral"
+            },
+            {
+              "name": "primary"
+            },
+            {
+              "name": "success"
+            },
+            {
+              "name": "warning"
             }
           ]
         }
@@ -855,6 +854,10 @@
         {
           "name": "name",
           "description": "The title of wizard"
+        },
+        {
+          "name": "skip-intro",
+          "description": "skip over the initial page with \"start process\" button"
         },
         {
           "name": "sub-heading",

@@ -7,13 +7,16 @@ export default {
 };
 
 const variations = {
-  Completed: 'completed',
-  Pending: 'pending',
-  Cancelled: 'cancelled'
+  Success: 'success',
+  Alert: 'alert',
+  Warning: 'warning',
+  Neutral: 'neutral',
+  Default: 'default',
+  Primary: 'primary'
 };
 
 export const Default = () => {
-  const variation = select('Variation', variations, 'completed');
+  const variation = select('Variation', variations, 'success');
   const subtle = boolean('Subtle', false);
   const labelText = text('Status Label Text', 'Status Label Text');
 
@@ -24,34 +27,34 @@ export const Default = () => {
   );
 };
 
-export const Cancelled = () => {
-  return <smtt-status-label variation="cancelled">Failed</smtt-status-label>;
+export const Alert = () => {
+  return <smtt-status-label variation="alert">Alert</smtt-status-label>;
 };
 
-export const Completed = () => {
+export const Success = () => {
   return <smtt-status-label>Completed</smtt-status-label>;
 };
 
-export const Pending = () => {
-  return <smtt-status-label variation="pending">Pending</smtt-status-label>;
+export const Warning = () => {
+  return <smtt-status-label variation="warning">Warning</smtt-status-label>;
 };
 
-export const SubtleCancelled = () => {
+export const SubtleAlert = () => {
   return (
-    <smtt-status-label subtle variation="cancelled">
+    <smtt-status-label subtle variation="alert">
       Failed
     </smtt-status-label>
   );
 };
 
-export const SubtleCompleted = () => {
-  return <smtt-status-label subtle>Completed</smtt-status-label>;
+export const SubtleSuccess = () => {
+  return <smtt-status-label subtle>success</smtt-status-label>;
 };
 
-export const SubtlePending = () => {
+export const SubtleWarning = () => {
   return (
-    <smtt-status-label subtle variation="pending">
-      Pending
+    <smtt-status-label subtle variation="warning">
+      Warning
     </smtt-status-label>
   );
 };

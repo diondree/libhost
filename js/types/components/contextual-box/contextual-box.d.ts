@@ -4,9 +4,11 @@ export declare class ContextualBox {
      */
     contextualBox: HTMLSmttContextualBoxElement;
     /**
-     * Reference to dismiss icon
+     * Reference to dismiss button
      */
-    dismissIcon: HTMLSmttIconElement;
+    closeButton: HTMLButtonElement;
+    /** close button accessible label */
+    closeButtonLabel: string;
     /**
      * The variation of the contextual box
      */

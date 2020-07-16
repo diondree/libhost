@@ -1,3 +1,4 @@
+import { EventEmitter } from "../../stencil.core";
 export declare class Box {
     /** text label for our checkbox */
     label: string;
@@ -7,10 +8,15 @@ export declare class Box {
     checked: string;
     /** wether or not the checkbox is disabled */
     disableCheckbox: boolean;
-    /** function to run when clicked */
-    clickAction: (ev: MouseEvent) => void;
+    /** Emitted when the value of the checkbox changes */
+    change: EventEmitter<String>;
+    /** input element for the checkbox */
     checkBoxInput: HTMLInputElement;
-    /** keydown handler to make checkbox toggle with enter key */
+    checkedChange(newValue: any): void;
+    /** ID for checkbox label */
+    private labelId;
+    /** keydown handler to make checkbox toggle with space key */
     handleKeyDown(ev: KeyboardEvent): void;
+    isIE11: boolean;
     render(): any;
 }

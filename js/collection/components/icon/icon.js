@@ -4,10 +4,6 @@ import { getSvgContent, createNodeFromString } from './util';
 import { colorSVGNodes } from '../../utils/utils';
 export class SmartIcons {
     constructor() {
-        /**
-         * The label for the icon
-         */
-        this.label = 'icon';
         this.loadRequestedIcons();
     }
     /** @todo make this function run everytime the property is changed */
@@ -36,11 +32,11 @@ export class SmartIcons {
             SVGElement.style.height = this.width;
             SVGElement.style.width = this.width;
         }
-        /* configure color */
-        if (this.color) {
-            /* for each of the paths inside the svg we want to color them with the color specified in the property */
-            colorSVGNodes(children, this.color);
-        }
+        /* for each of the paths inside the svg we want to color them with the color specified in the property
+         * or with the current text color */
+        colorSVGNodes(children, this.color);
+        /* remove focus in IE */
+        SVGElement.setAttribute("focusable", "false");
         this.svgContent = contentNode.innerHTML;
         return contentNode;
     }
@@ -69,7 +65,7 @@ export class SmartIcons {
     }
     render() {
         // TODO: add a default aria label if none is present to host
-        return (h(Host, { role: "img", style: { width: this.width, height: this.width }, "aria-label": this.label }, this.svgContent ? (h("div", { style: { color: 'currentColor' }, class: `icon d-inline-flex ${this.disabled ? 'disable' : ''}`, innerHTML: this.svgContent })) : (h("div", { class: "icon" }))));
+        return (h(Host, { role: this.label ? "img" : null, style: { width: this.width, height: this.width }, "aria-label": this.label }, this.svgContent ? (h("div", { style: { color: 'currentColor' }, class: `icon d-inline-flex ${this.disabled ? 'disable' : ''}`, innerHTML: this.svgContent })) : (h("div", { class: "icon" }))));
     }
     static get is() { return "smtt-icon"; }
     static get encapsulation() { return "shadow"; }
@@ -204,8 +200,7 @@ export class SmartIcons {
                 "text": "The label for the icon"
             },
             "attribute": "label",
-            "reflect": false,
-            "defaultValue": "'icon'"
+            "reflect": false
         },
         "preload": {
             "type": "string",

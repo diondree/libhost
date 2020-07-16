@@ -1,12 +1,13 @@
 import { Host, h } from "@stencil/core";
+import { getUniqueContextId } from "../../utils/utils";
 export class Input {
     constructor() {
         /** id to be applied to input field */
         this.formId = this.name;
         /** type of input field */
         this.type = 'text';
-        /** Whether or not to validate input on blur */
-        this.validateOnBlur = true;
+        /** icon placement */
+        this.iconPlacement = 'icon-right';
         /** map of possible regexes that can be applied to input's pattern field */
         this.patternMap = {
             ALLOWED_ALPHANUMERIC_CHARS_REGEX: '^[a-zA-Z0-9]+$',
@@ -30,6 +31,12 @@ export class Input {
         this.focus = options => {
             this.inputEl.focus(options);
         };
+        /** maximum length of the input field */
+        this.labelID = getUniqueContextId('label');
+        /** maximum length of the input field */
+        this.feedbackID = getUniqueContextId('feedback');
+        /** maximum length of the input field */
+        this.helpTextID = getUniqueContextId('help-text');
         /** provide the validity state of the component */
         this.validity = () => {
             if (this.inputEl) {
@@ -72,9 +79,24 @@ export class Input {
             this.inputEl.focus();
         }
     }
-    // @Prop() value: Function = () => {
-    //   return this.inputEl.value;
-    // };
+    async reportValidity() {
+        let invalidStates = this.validity();
+        if (!this.touched) {
+            this.touched = true;
+        }
+        for (const state in invalidStates) {
+            if (state !== 'valid' && invalidStates[state]) {
+                if (this.errorMap[state]) {
+                    this.errorMsg = this.errorMap[state];
+                }
+                else {
+                    this.errorMsg = this.errorMap.default;
+                }
+                break;
+            }
+        }
+        this.isValid = invalidStates.valid;
+    }
     /**
      * Update the native input element when the value changes
      */
@@ -85,21 +107,7 @@ export class Input {
     }
     updateValidity() {
         if (this.validateOnBlur) {
-            let invalidStates = this.validity();
-            if (!this.touched) {
-                this.touched = true;
-            }
-            for (const state in invalidStates) {
-                if (state !== 'valid' && invalidStates[state]) {
-                    if (this.errorMap[state]) {
-                        this.errorMsg = this.errorMap[state];
-                    }
-                    else {
-                        this.errorMsg = this.errorMap.default;
-                    }
-                }
-            }
-            this.isValid = invalidStates.valid;
+            this.reportValidity();
         }
     }
     getPattern() {
@@ -112,17 +120,19 @@ export class Input {
     }
     render() {
         const isInvalid = this.isInvalid || (!this.isValid && this.touched);
-        return (h(Host, { class: `form-group ${this.helpText ? 'form-group--helptext-layout' : ''} ${this.fullWidth ? 'w-100' : ''}` },
-            h("label", Object.assign({ id: "label", class: `form-group__label ${isInvalid ? 'form-group__label--invalid' : ''}`, htmlFor: this.formId }, this.labelProps), this.label),
-            this.helpText && (h("small", { id: "help-text", class: "form-group__help-text form-text text-muted" }, this.helpText)),
-            h("div", { class: `input-holder ${this.fullWidth ? 'input-holder--stretch' : ''}` },
+        return (h(Host, { class: `form-group ${this.helpText ? 'form-group--helptext-layout' : ''} ${this.fullWidth ? 'form-group--full-width' : ''}` },
+            h("label", Object.assign({ id: `${this.labelID}`, class: `form-group__label ${isInvalid ? 'form-group__label--invalid' : ''}`, htmlFor: this.formId }, this.labelProps), this.label),
+            this.helpText && (h("small", { id: this.helpTextID, class: "form-group__help-text form-text text-muted" }, this.helpText)),
+            h("div", { class: `input-holder ${this.fullWidth ? 'input-holder--stretch' : ''}
+          input-holder--${this.iconPlacement}` },
                 h("input", { type: this.type, class: `form-control form-control--${this.type} ${this.isActive ? 'is-active' : ''} ${this.isValid
                         ? 'is-valid'
                         : this.touched || this.isInvalid
                             ? 'is-invalid'
-                            : ''}`, pattern: this.patternRegex, "aria-labelledby": "label", id: this.formId, ref: el => {
+                            : ''}
+            ${this.icon ? 'form-control--icon' : ''}`, pattern: this.patternRegex, "aria-labelledby": this.labelID, id: this.formId, ref: el => {
                         this.inputEl = el;
-                    }, placeholder: this.placeholder, "aria-placeholder": this.placeholder, required: this.required, "aria-required": this.required, readonly: this.readonly, "aria-readonly": this.readonly, disabled: this.disabled, "aria-describedby": "help-text", onInput: this.onInput, form: "myForm", value: this.value }),
+                    }, placeholder: this.placeholder, "aria-placeholder": this.placeholder, required: this.required, "aria-required": this.required, readonly: this.readonly, maxlength: this.maxlength, "aria-readonly": this.readonly, disabled: this.disabled, "aria-describedby": `${this.helpTextID} ${this.feedbackID}`, onInput: this.onInput, form: "myForm", value: this.value }),
                 this.type === 'password' ? (h("span", { onClick: () => {
                         this.passwordVisible = !this.passwordVisible;
                         if (this.passwordVisible && this.type === 'password') {
@@ -138,11 +148,10 @@ export class Input {
                             this.passwordRevealToggle = ref;
                         }, preload: "eye-slash,eye", icon: "eye-slash", width: "24px" }))) : null,
                 this.icon && (h("span", { onClick: () => {
-                        // this.inputEl.focus();
                         this.iconClick.emit();
                     }, class: "input-icon" },
                     h("smtt-icon", { icon: this.icon, width: "24px" })))),
-            h("div", { class: `${isInvalid ? 'invalid-feedback--visible' : ''} invalid-feedback` },
+            h("div", { id: `${this.feedbackID}`, class: `${isInvalid ? 'invalid-feedback--visible' : ''} invalid-feedback` },
                 h("smtt-icon", { class: "mr-2", icon: "exclamation-circle", width: "24px", color: "currentColor" }),
                 this.errorMsg ? this.errorMsg : 'Please enter a valid input')));
     }
@@ -414,6 +423,23 @@ export class Input {
             "attribute": "autofocus",
             "reflect": false
         },
+        "maxlength": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "maximum length of the input field"
+            },
+            "attribute": "maxlength",
+            "reflect": false
+        },
         "icon": {
             "type": "string",
             "mutable": false,
@@ -426,10 +452,28 @@ export class Input {
             "optional": false,
             "docs": {
                 "tags": [],
-                "text": "If the input field should"
+                "text": "Icon to be displayed inside the input field"
             },
             "attribute": "icon",
             "reflect": false
+        },
+        "iconPlacement": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "'icon-right' | 'icon-left'",
+                "resolved": "\"icon-left\" | \"icon-right\"",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "icon placement"
+            },
+            "attribute": "icon-placement",
+            "reflect": false,
+            "defaultValue": "'icon-right'"
         },
         "isInvalid": {
             "type": "boolean",
@@ -480,8 +524,7 @@ export class Input {
                 "text": "Whether or not to validate input on blur"
             },
             "attribute": "validate-on-blur",
-            "reflect": false,
-            "defaultValue": "true"
+            "reflect": false
         },
         "labelProps": {
             "type": "any",
@@ -535,6 +578,60 @@ export class Input {
                 "text": ""
             },
             "defaultValue": "options => {\n    this.inputEl.focus(options);\n  }"
+        },
+        "labelID": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "maximum length of the input field"
+            },
+            "attribute": "label-i-d",
+            "reflect": false,
+            "defaultValue": "getUniqueContextId('label')"
+        },
+        "feedbackID": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "maximum length of the input field"
+            },
+            "attribute": "feedback-i-d",
+            "reflect": false,
+            "defaultValue": "getUniqueContextId('feedback')"
+        },
+        "helpTextID": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": "maximum length of the input field"
+            },
+            "attribute": "help-text-i-d",
+            "reflect": false,
+            "defaultValue": "getUniqueContextId('help-text')"
         },
         "validity": {
             "type": "unknown",
@@ -656,6 +753,24 @@ export class Input {
                 }
             }
         }]; }
+    static get methods() { return {
+        "reportValidity": {
+            "complexType": {
+                "signature": "() => Promise<void>",
+                "parameters": [],
+                "references": {
+                    "Promise": {
+                        "location": "global"
+                    }
+                },
+                "return": "Promise<void>"
+            },
+            "docs": {
+                "text": "",
+                "tags": []
+            }
+        }
+    }; }
     static get watchers() { return [{
             "propName": "value",
             "methodName": "valueChanged"

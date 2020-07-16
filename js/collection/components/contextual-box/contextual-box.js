@@ -1,6 +1,8 @@
 import { Host, h } from "@stencil/core";
 export class ContextualBox {
     constructor() {
+        /** close button accessible label */
+        this.closeButtonLabel = "Close";
         /**
          * The variation of the contextual box
          */
@@ -30,7 +32,7 @@ export class ContextualBox {
     }
     dismissFocus() {
         if (this.dismissable && this.isVisible) {
-            this.dismissIcon.focus();
+            this.closeButton.focus();
         }
     }
     componentDidLoad() {
@@ -38,27 +40,22 @@ export class ContextualBox {
     }
     render() {
         const variationIcons = {
-            success: (h("smtt-icon", { icon: "check-circle", color: "var(--color-green-500)", label: "success" })),
-            warning: (h("smtt-icon", { icon: "exclamation-triangle", color: "var(--color-yellow-500)", label: "warning" })),
-            info: (h("smtt-icon", { icon: "info-circle", color: "var(--color-deep-blue-500)", label: "info" })),
-            error: (h("smtt-icon", { icon: "exclamation-circle", color: "var(--color-red-500)", label: "error" }))
-        };
-        const colors = {
-            success: 'var(--color-green-900)',
-            warning: 'var(--color-yellow-900)',
-            info: 'var(--color-blue-900)',
-            error: 'var(--color-red-900)'
+            success: (h("smtt-icon", { icon: "check-circle", label: "success icon" })),
+            warning: (h("smtt-icon", { icon: "exclamation-triangle", label: "warning icon" })),
+            info: (h("smtt-icon", { icon: "info-circle", label: "info icon" })),
+            error: (h("smtt-icon", { icon: "exclamation-circle", label: "error icon" }))
         };
         return (h(Host, { "aria-hidden": `${!this.isVisible}` },
             h("div", { class: `box-container ${this.isVisible && 'box-container--visible'}`, role: "alert", style: { maxHeight: `${this.isVisible ? this.height : 0}px` } },
                 h("div", { class: `contextual-box ${this.isVisible &&
                         ' contextual-box--visible'}` },
-                    h("header", { class: `contextual-box-header ${this.variation}` },
+                    h("header", { class: `contextual-box__header contextual-box__header--${this.variation}` },
                         h("div", { class: "d-flex align-items-center" },
-                            h("span", { class: "h-24 mr-3" }, variationIcons[this.variation]),
+                            h("span", { class: "h-24 mr-3 contextual-box__icon" }, variationIcons[this.variation]),
                             h("div", { class: "contextual-box__title" }, this.messageTitle)),
-                        this.dismissable && (h("smtt-icon", { tabindex: "-1", ref: ref => (this.dismissIcon = ref), icon: "remove-circle", color: colors[this.variation], width: "20px", onClick: () => (this.isVisible = false), onKeyDown: this.handleKeyPress, role: "button" }))),
-                    this.instructions && (h("div", { class: "contextual-box-body" }, this.instructions))))));
+                        this.dismissable && (h("button", { class: "contextual-box__close-button", "aria-label": this.closeButtonLabel, onClick: () => (this.isVisible = false), ref: ref => (this.closeButton = ref), type: "button" },
+                            h("smtt-icon", { icon: "remove-circle", width: "20px" })))),
+                    this.instructions && (h("div", { class: "contextual-box__body" }, this.instructions))))));
     }
     static get is() { return "smtt-contextual-box"; }
     static get encapsulation() { return "shadow"; }
